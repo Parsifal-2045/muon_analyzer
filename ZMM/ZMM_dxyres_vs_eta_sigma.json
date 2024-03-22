@@ -1,0 +1,86 @@
+{
+    "dxyres vs eta Sigma": {
+        "comment": "dxyres vs eta Sigma",
+        "inputs": {
+            "1 L3_from_L1Tk": {
+                "label": "L3 tracks from L1Tk",
+                "legendEntry": "L3 tracks from L1Tk",
+                "filename": "plots_Z_mu_mu.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltIter2Phase2L3FromL1TkMuonMerged",
+                "plot": "dxyres_vs_eta_Sigma"
+            },
+            "2 L3OI": {
+                "label": "L3 OI global muons",
+                "legendEntry": "L3 OI global muons",
+                "filename": "plots_Z_mu_mu.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltL3MuonsPhase2L3OI",
+                "plot": "dxyres_vs_eta_Sigma"
+            },
+            "3 L3_no_ID": {
+                "label": "L3 tracks no ID",
+                "legendEntry": "L3 tracks no ID",
+                "filename": "plots_Z_mu_mu.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3MuonMerged",
+                "plot": "dxyres_vs_eta_Sigma"
+            },
+            "4 L3_ID": {
+                "label": "L3 tracks ID",
+                "legendEntry": "L3 tracks ID",
+                "filename": "plots_Z_mu_mu.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3MuonTrks",
+                "plot": "dxyres_vs_eta_Sigma"
+            }
+        },
+        "plot": {
+            "x": [
+                -2.5,
+                2.5,
+                "#eta"
+            ],
+            "y": [
+                0.0,
+                0.1,
+                "dxy Residual sigma"
+            ],
+            "option": "",
+            "legendTitle": "dxy Residual vs eta sigma",
+            "caption": "Z PU200 CMSSW 14_0_0",
+            "logo": [
+                "CMS",
+                "Work In Progress"
+            ],
+            "colorMap": [
+                632,
+                866,
+                795,
+                842,
+                6,
+                7,
+                8,
+                9
+            ],
+            "markerMap": [
+                21,
+                23,
+                20,
+                22,
+                25,
+                26
+            ],
+            "legendRange": [
+                0.45,
+                0.70,
+                0.90,
+                0.85
+            ]
+        },
+        "output": {
+            "directory": "ZMM/plots/",
+            "filenamePlot": "ZMM_dxyres_vs_eta_Sigma",
+            "fileType": [
+                "png",
+                "pdf"
+            ]
+        }
+    }
+}

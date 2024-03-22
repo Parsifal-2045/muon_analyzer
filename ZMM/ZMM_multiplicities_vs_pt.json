@@ -1,0 +1,86 @@
+{
+    "Multiplicities vs pT": {
+        "comment": "Multiplicities vs pT",
+        "inputs": {
+            "1 L3_from_L1Tk": {
+                "label": "L3 tracks from L1Tk",
+                "legendEntry": "L3 tracks from L1Tk",
+                "filename": "plots_Z_mu_mu.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltIter2Phase2L3FromL1TkMuonMerged",
+                "plot": "num_reco_pT"
+            },
+            "2 L3OI": {
+                "label": "L3 OI global muons",
+                "legendEntry": "L3 OI global muons",
+                "filename": "plots_Z_mu_mu.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltL3MuonsPhase2L3OI",
+                "plot": "num_reco_pT"
+            },
+            "3 L3_no_ID": {
+                "label": "L3 tracks no ID",
+                "legendEntry": "L3 tracks no ID",
+                "filename": "plots_Z_mu_mu.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3MuonMerged",
+                "plot": "num_reco_pT"
+            },
+            "4 L3_ID": {
+                "label": "L3 tracks ID",
+                "legendEntry": "L3 tracks ID",
+                "filename": "plots_Z_mu_mu.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3MuonTrks",
+                "plot": "num_reco_pT"
+            }
+        },
+        "plot": {
+            "x": [
+                1.0,
+                100,
+                "pT"
+            ],
+            "y": [
+                0,
+                20000,
+                "Occurrences"
+            ],
+            "option": "",
+            "legendTitle": "Multiplicities vs pT",
+            "caption": "Z PU200 CMSSW 14_0_0",
+            "logo": [
+                "CMS",
+                "Work In Progress"
+            ],
+            "colorMap": [
+                632,
+                866,
+                795,
+                842,
+                6,
+                7,
+                8,
+                9
+            ],
+            "markerMap": [
+                21,
+                23,
+                20,
+                22,
+                25,
+                26
+            ],
+            "legendRange": [
+                0.45,
+                0.70,
+                0.90,
+                0.85
+            ]
+        },
+        "output": {
+            "directory": "ZMM/plots/",
+            "filenamePlot": "ZMM_multiplicities_vs_pt",
+            "fileType": [
+                "png",
+                "pdf"
+            ]
+        }
+    }
+}
