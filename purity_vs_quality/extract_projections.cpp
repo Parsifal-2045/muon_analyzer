@@ -4,7 +4,7 @@
 #include <TFile.h>
 #include <TH2.h>
 
-void extract_projections()
+int main()
 {
     std::string path = "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/";
     std::vector<std::string> positions(5);
@@ -19,7 +19,7 @@ void extract_projections()
     names[1] = "L2 standalone muons from L1Tk";
     names[2] = "L3 OI global muons";
     names[3] = "L3 tracks no ID";
-    names[4] = "L3 tracks ID";
+    names[4] = "L3 tracks Muon ID";
 
     TFile *input = new TFile("../plots_no_purity_cut.root", "READ");
 

@@ -31,8 +31,8 @@
                 "plot": "effic_vs_eta"
             },
             "5 L3_ID": {
-                "label": "L3 tracks ID",
-                "legendEntry": "L3 tracks ID",
+                "label": "L3 tracks Muon ID",
+                "legendEntry": "L3 tracks Muon ID",
                 "filename": "plots_no_purity_cut.root",
                 "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3MuonTrks",
                 "plot": "effic_vs_eta"
@@ -84,7 +84,7 @@
             ]
         },
         "output": {
-            "directory": "no_efficiency_cut/plots/",
+            "directory": "no_purity_cut/plots/",
             "filenamePlot": "effic_vs_eta_no_purity_cut",
             "fileType": [
                 "png",

@@ -31,8 +31,8 @@
                 "plot": "num_reco_eta"
             },
             "5 L3_ID": {
-                "label": "L3 tracks ID",
-                "legendEntry": "L3 tracks ID",
+                "label": "L3 tracks Muon ID",
+                "legendEntry": "L3 tracks Muon ID",
                 "filename": "plots_single_mu_PU_9k.root",
                 "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3MuonTrks",
                 "plot": "num_reco_eta"
@@ -84,7 +84,7 @@
             ]
         },
         "output": {
-            "directory": "efficiency_cut@0.75/plots/",
+            "directory": "purity_cut@0.75/plots/",
             "filenamePlot": "multiplicities_vs_eta",
             "fileType": [
                 "png",

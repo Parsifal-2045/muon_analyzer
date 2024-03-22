@@ -24,8 +24,8 @@
                 "plot": "nPixel_LayersWithMeas_vs_eta_prof"
             },
             "4 L3_ID": {
-                "label": "L3 tracks ID",
-                "legendEntry": "L3 tracks ID",
+                "label": "L3 tracks Muon ID",
+                "legendEntry": "L3 tracks Muon ID",
                 "filename": "plots_no_purity_cut.root",
                 "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3MuonTrks",
                 "plot": "nPixel_LayersWithMeas_vs_eta_prof"
@@ -75,7 +75,7 @@
             ]
         },
         "output": {
-            "directory": "no_efficiency_cut/plots/",
+            "directory": "no_purity_cut/plots/",
             "filenamePlot": "nhits_pixel_no_purity_cut",
             "fileType": [
                 "png",

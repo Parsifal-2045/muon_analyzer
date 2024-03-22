@@ -31,8 +31,8 @@
                 "plot": "fakerate_vs_eta"
             },
             "5 L3_ID": {
-                "label": "L3 tracks ID",
-                "legendEntry": "L3 tracks ID",
+                "label": "L3 tracks Muon ID",
+                "legendEntry": "L3 tracks Muon ID",
                 "filename": "plots_low_purity_cut.root",
                 "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3MuonTrks",
                 "plot": "fakerate_vs_eta"

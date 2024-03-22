@@ -31,11 +31,11 @@
                 "plot": "purity L3 tracks no ID"
             },
             "5 L3_ID": {
-                "label": "L3 tracks ID",
-                "legendEntry": "L3 tracks ID",
+                "label": "L3 tracks Muon ID",
+                "legendEntry": "L3 tracks Muon ID",
                 "filename": "purity_vs_quality/no_purity_cut_projections.root",
                 "folder": "",
-                "plot": "purity L3 tracks ID"
+                "plot": "purity L3 tracks Muon ID"
             }
         },
         "plot": {
