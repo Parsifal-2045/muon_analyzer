@@ -111,7 +111,7 @@ int main()
         // Fill control gen plots
         for (std::size_t i_gen = 0; i_gen < *n_gen; ++i_gen)
         {
-            if (!(gen_pdgId[i_gen] == 13 && gen_status[i_gen] == 1))
+            if (!(std::abs(gen_pdgId[i_gen]) == 13 && gen_status[i_gen] == 1))
             {
                 continue;
             }
