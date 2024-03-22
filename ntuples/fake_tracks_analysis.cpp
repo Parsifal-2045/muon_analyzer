@@ -63,6 +63,8 @@ struct muon_type
     std::optional<TTreeReaderArray<Short_t>> nhits_pixel_;
     std::optional<TTreeReaderArray<Short_t>> nhits_tracker_;
 
+    std::vector<int> good_indexes_;
+
     bool debug = false;
 };
 
@@ -119,6 +121,7 @@ int main()
     TTreeReaderArray<Float_t> gen_phi{reader, "GenPart_phi"};
     TTreeReaderArray<Int_t> gen_pdgId{reader, "GenPart_pdgId"};
     TTreeReaderArray<Int_t> gen_status{reader, "GenPart_status"};
+
     // Reco Muons
     std::vector<muon_type> muon_types;
     for (std::size_t i = 0; i != names.size(); ++i)
@@ -130,7 +133,7 @@ int main()
     {
         std::vector<int> gen_index;
 
-        // Fill GEN plots
+        // Fill GEN plots eta, phi
         for (int i_gen = 0; i_gen < *n_gen; ++i_gen)
         {
             if (!(std::abs(gen_pdgId[i_gen]) == 13 && gen_status[i_gen] == 1))
@@ -142,27 +145,40 @@ int main()
             gen_index.push_back(i_gen);
         }
 
-        // Eta, phi, and Delta R for all muon types
+        // Fill Reco plots eta, phi
+        for (std::size_t i = 0; i != names.size(); ++i)
+        {
+            std::string eta_string = names[i] + "_eta";
+            std::string phi_string = names[i] + "_phi";
+
+            for (int i_mu = 0; i_mu < *(muon_types[i].n_); ++i_mu)
+            {
+                histos[eta_string.c_str()]->Fill(muon_types[i].eta_[i_mu]);
+                histos[phi_string.c_str()]->Fill(muon_types[i].phi_[i_mu]);
+            }
+        }
+
+        // Delta R for all muon types
+        // Loop over gen_index to get delta_R
         for (auto i_gen : gen_index)
         {
             for (std::size_t i = 0; i != names.size(); ++i)
             {
-                std::string eta_string = names[i] + "_eta";
-                std::string phi_string = names[i] + "_phi";
                 std::string delta_R_string = names[i] + "_delta_R";
 
                 for (int i_mu = 0; i_mu < *(muon_types[i].n_); ++i_mu)
                 {
-                    histos[eta_string.c_str()]->Fill(muon_types[i].eta_[i_mu]);
-                    histos[phi_string.c_str()]->Fill(muon_types[i].phi_[i_mu]);
                     float delta_eta = gen_eta[i_gen] - muon_types[i].eta_[i_mu];
-                    float delta_phi = gen_phi[i_gen] - muon_types[i].phi_[i_mu];
+                    float delta_phi = std::acos(std::cos(gen_phi[i_gen] - muon_types[i].phi_[i_mu]));
                     float delta_R = std::sqrt(delta_eta * delta_eta + delta_phi * delta_phi);
                     histos[delta_R_string.c_str()]->Fill(delta_R);
                     // Reco Tracks
-                    if (delta_R < 0.01)
+                    float max_delta_R = names[i].substr(0, 2) == "l2" ? 0.05 : 0.01;
+                    if (delta_R < max_delta_R)
                     {
-                        // Fill Reco Tracks pt, nPixelHits, and nTrackerHits
+                        // Save good index to filter out later
+                        muon_types[i].good_indexes_.push_back(i_mu);
+                        // Fill Reco Tracks pt, nPixelHits, and nTrackerHits plots
                         std::string pt_string = names[i] + "_pt_reco";
                         histos[pt_string.c_str()]->Fill(muon_types[i].pt_[i_mu]);
                         if (names[i].substr(0, 2) == "l3")
@@ -173,22 +189,35 @@ int main()
                             histos[nhits_tracker_string.c_str()]->Fill(muon_types[i].nhits_tracker_->At(i_mu));
                         }
                     }
-                    // Fake Tracks
-                    else if (delta_R >= 0.01)
-                    {
-                        // Fill Fake Tracks pt, nPixelHits, and nTrackerHits
-                        std::string pt_string = names[i] + "_pt_fake";
-                        histos[pt_string.c_str()]->Fill(muon_types[i].pt_[i_mu]);
-                        if (names[i].substr(0, 2) == "l3")
-                        {
-                            std::string nhits_pixel_string = names[i] + "_nPixelHits_fake";
-                            std::string nhits_tracker_string = names[i] + "_nTrkLays_fake";
-                            histos[nhits_pixel_string.c_str()]->Fill(muon_types[i].nhits_pixel_->At(i_mu));
-                            histos[nhits_tracker_string.c_str()]->Fill(muon_types[i].nhits_tracker_->At(i_mu));
-                        }
-                    }
+                    // Wait to end the loop before considering fake tracks
+                    // One reco could be fake for one of the two GEN Mu from Z
                 }
             }
+        } // End loop over gen_index
+
+        // Fill Fake Tracks pt, nPixelHits, and nTrackerHits plots
+        for (std::size_t i = 0; i != names.size(); ++i)
+        {
+            for (int i_mu = 0; i_mu != *(muon_types[i].n_); ++i_mu)
+            {
+                // Avoid good muons
+                if (std::find(muon_types[i].good_indexes_.begin(), muon_types[i].good_indexes_.end(), i_mu) != muon_types[i].good_indexes_.end())
+                {
+                    continue;
+                }
+                // Fill Fake Tracks pt, nPixelHits, and nTrackerHits
+                std::string pt_string = names[i] + "_pt_fake";
+                histos[pt_string.c_str()]->Fill(muon_types[i].pt_[i_mu]);
+                if (names[i].substr(0, 2) == "l3")
+                {
+                    std::string nhits_pixel_string = names[i] + "_nPixelHits_fake";
+                    std::string nhits_tracker_string = names[i] + "_nTrkLays_fake";
+                    histos[nhits_pixel_string.c_str()]->Fill(muon_types[i].nhits_pixel_->At(i_mu));
+                    histos[nhits_tracker_string.c_str()]->Fill(muon_types[i].nhits_tracker_->At(i_mu));
+                }
+            }
+            // Clear indexes event per event
+            muon_types[i].good_indexes_.clear();
         }
     }
     // Save all histograms

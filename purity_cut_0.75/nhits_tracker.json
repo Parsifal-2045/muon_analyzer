@@ -75,7 +75,7 @@
             ]
         },
         "output": {
-            "directory": "purity_cut@0.75/plots/",
+            "directory": "purity_cut_0.75/plots/",
             "filenamePlot": "nhits_tracker",
             "fileType": [
                 "png",
