@@ -1,0 +1,81 @@
+{
+    "L2 hits multiplicity": {
+        "comment": "L2 hits multiplicity",
+        "inputs": {
+            "1 DT": {
+                "label": "DT",
+                "legendEntry": "DT",
+                "filename": "plots_single_muon_20k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltL2MuonsFromL1TkMuon_UpdAtVtx",
+                "plot": "nDThits_vs_eta_prof"
+            },
+            "2 CSC": {
+                "label": "CSC",
+                "legendEntry": "CSC",
+                "filename": "plots_single_muon_20k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltL2MuonsFromL1TkMuon_UpdAtVtx",
+                "plot": "nCSChits_vs_eta_prof"
+            },
+            "3 RPC": {
+                "label": "RPC",
+                "legendEntry": "RPC",
+                "filename": "plots_single_muon_20k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltL2MuonsFromL1TkMuon_UpdAtVtx",
+                "plot": "nRPChits_vs_eta_prof"
+            }
+        },
+        "plot": {
+            "x": [
+                -2.5,
+                2.5,
+                "GEN #mu #eta"
+            ],
+            "y": [
+                0.0,
+                50.0,
+                "Number of Hits / track"
+            ],
+            "option": "",
+            "legendTitle": "L2 muon hit multiplicities",
+            "caption": "Private simulation",
+            "logo": [
+                "CMS",
+                "Work In Progress"
+            ],
+            "colorMap": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+            ],
+            "markerMap": [
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26
+            ],
+            "legendRange": [
+                0.55,
+                0.70,
+                0.85,
+                0.85
+            ]
+        },
+        "output": {
+            "directory": "muon_hlt_phase2/",
+            "filenamePlot": "n_hits_vs_eta_L2UpVtx",
+            "fileType": [
+                "png",
+                "pdf"
+            ]
+        }
+    }
+}

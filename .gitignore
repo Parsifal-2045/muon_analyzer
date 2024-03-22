@@ -1,0 +1,10 @@
+# input
+*.root
+
+# output
+*.png
+*.pdf
+*.out
+
+# vscode
+.vscode/
