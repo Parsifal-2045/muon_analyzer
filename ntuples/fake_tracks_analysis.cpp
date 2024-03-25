@@ -89,6 +89,13 @@ int main()
     {
         std::string eta = names[i] + "_eta";
         histos[eta.c_str()] = new TH1F(eta.c_str(), "; #eta; Entries", nbins, -2.5, 2.5);
+        if (names[i].substr(0, 2) == "L1")
+        {
+            std::string eta_reco = names[i] + "_eta_reco";
+            histos[eta_reco.c_str()] = new TH1F(eta_reco.c_str(), "; Reco tracks #eta; Entries", nbins, -2.5, 2.5);
+            std::string eta_fake = names[i] + "_eta_fake";
+            histos[eta_fake.c_str()] = new TH1F(eta_fake.c_str(), "; Fake tracks #eta; Entries", nbins, -2.5, 2.5);
+        }
         std::string phi = names[i] + "_phi";
         histos[phi.c_str()] = new TH1F(phi.c_str(), "; #phi; Entries", nbins, -TMath::Pi(), TMath::Pi());
         std::string delta_R = names[i] + "_delta_R";
@@ -188,6 +195,11 @@ int main()
                             std::string nhits_tracker_string = names[i] + "_nTrkLays_reco";
                             histos[nhits_tracker_string.c_str()]->Fill(muon_types[i].nhits_tracker_->At(i_mu));
                         }
+                        else if (names[i].substr(0, 2) == "L1")
+                        {
+                            std::string eta_reco_string = names[i] + "_eta_reco";
+                            histos[eta_reco_string.c_str()]->Fill(muon_types[i].eta_[i_mu]);
+                        }
                     }
                     // Wait to end the loop before considering fake tracks
                     // One reco could be fake for one of the two GEN Mu from Z
@@ -204,6 +216,11 @@ int main()
                 if (std::find(muon_types[i].good_indexes_.begin(), muon_types[i].good_indexes_.end(), i_mu) != muon_types[i].good_indexes_.end())
                 {
                     continue;
+                }
+                if (names[i].substr(0, 2) == "L1")
+                {
+                    std::string eta_fake_string = names[i] + "_eta_fake";
+                    histos[eta_fake_string.c_str()]->Fill(muon_types[i].eta_[i_mu]);
                 }
                 // Fill Fake Tracks pt, nPixelHits, and nTrackerHits
                 std::string pt_string = names[i] + "_pt_fake";
@@ -223,6 +240,7 @@ int main()
     // Save all histograms
     std::filesystem::create_directory(RESULTS_FOLDER);
     auto dt_color = TColor::GetColorTransparent(kOrange - 2, 0.5);
+    bool print = true;
     for (const auto &[name, histo] : histos)
     {
         TCanvas c{name.c_str(), name.c_str(), 3000, 1500};
@@ -231,6 +249,24 @@ int main()
         histo->SetFillColor(dt_color);
         histo->Draw();
         histo->SetMinimum(0.0);
+
+        if (print)
+        {
+            if (name.find("_eta") != std::string::npos)
+            {
+                std::cout << "Total number of " << name << ": " << histo->GetEntries() << '\n';
+            }
+
+            if (name.find("_pt_reco") != std::string::npos)
+            {
+                std::cout << "Number of Reco " << name << ": " << histo->GetEntries() << '\n';
+            }
+
+            if (name.find("_pt_fake") != std::string::npos)
+            {
+                std::cout << "Number of Fake " << name << ": " << histo->GetEntries() << '\n';
+            }
+        }
 
         c.SaveAs(Form("%s/%s.png", RESULTS_FOLDER.c_str(), name.c_str()));
         c.SaveAs(Form("%s/%s.pdf", RESULTS_FOLDER.c_str(), name.c_str()));
