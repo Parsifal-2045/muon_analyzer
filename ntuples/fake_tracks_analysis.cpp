@@ -104,16 +104,21 @@ int main()
         histos[pt_fake.c_str()] = new TH1F(pt_fake.c_str(), "; Fake track pT; Entries", nbins, 0, 50);
         std::string pt_reco = names[i] + "_pt_reco";
         histos[pt_reco.c_str()] = new TH1F(pt_reco.c_str(), "; Reco track pT; Entries", nbins, 0, 100);
+        std::string reco_per_event = names[i] + "_reco_per_event";
+        histos[reco_per_event.c_str()] = new TH1I(reco_per_event.c_str(), "; Number of Reco objects per event; Occurrences", 6, 0, 6);
+        std::string fake_per_event = names[i] + "_fake_per_event";
+        histos[fake_per_event.c_str()] = new TH1I(fake_per_event.c_str(), "; Number of Fake objects per event; Occurrences", 18, 0, 18);
+
         if (names[i].substr(0, 2) == "l3")
         {
             std::string nhits_pixel_fake = names[i] + "_nPixelHits_fake";
-            histos[nhits_pixel_fake.c_str()] = new TH1F(nhits_pixel_fake.c_str(), "; Fake Tracks number of hits in the Pixel; Entries", 15, 0, 15);
+            histos[nhits_pixel_fake.c_str()] = new TH1I(nhits_pixel_fake.c_str(), "; Fake Tracks number of hits in the Pixel; Entries", 15, 0, 15);
             std::string nhits_pixel_reco = names[i] + "_nPixelHits_reco";
-            histos[nhits_pixel_reco.c_str()] = new TH1F(nhits_pixel_reco.c_str(), "; Reco Tracks number of hits in the Pixel; Entries", 15, 0, 15);
+            histos[nhits_pixel_reco.c_str()] = new TH1I(nhits_pixel_reco.c_str(), "; Reco Tracks number of hits in the Pixel; Entries", 15, 0, 15);
             std::string nhits_tracker_fake = names[i] + "_nTrkLays_fake";
-            histos[nhits_tracker_fake.c_str()] = new TH1F(nhits_tracker_fake.c_str(), "; Fake Tracks number of hits in the Tracker; Entries", 15, 0, 15);
+            histos[nhits_tracker_fake.c_str()] = new TH1I(nhits_tracker_fake.c_str(), "; Fake Tracks number of hits in the Tracker; Entries", 15, 0, 15);
             std::string nhits_tracker_reco = names[i] + "_nTrkLays_reco";
-            histos[nhits_tracker_reco.c_str()] = new TH1F(nhits_tracker_reco.c_str(), "; Reco Tracks number of hits in the Tracker; Entries", 15, 0, 15);
+            histos[nhits_tracker_reco.c_str()] = new TH1I(nhits_tracker_reco.c_str(), "; Reco Tracks number of hits in the Tracker; Entries", 15, 0, 15);
         }
     }
 
@@ -136,10 +141,10 @@ int main()
         muon_types.emplace_back(reader, names[i].c_str());
     }
 
+    int n_events = 1;
     while (reader.Next())
     {
         std::vector<int> gen_index;
-
         // Fill GEN plots eta, phi
         for (int i_gen = 0; i_gen < *n_gen; ++i_gen)
         {
@@ -172,7 +177,6 @@ int main()
             for (std::size_t i = 0; i != names.size(); ++i)
             {
                 std::string delta_R_string = names[i] + "_delta_R";
-
                 for (int i_mu = 0; i_mu < *(muon_types[i].n_); ++i_mu)
                 {
                     float delta_eta = gen_eta[i_gen] - muon_types[i].eta_[i_mu];
@@ -217,6 +221,7 @@ int main()
                 {
                     continue;
                 }
+                // Fill Fake Tracks eta
                 if (names[i].substr(0, 2) == "L1")
                 {
                     std::string eta_fake_string = names[i] + "_eta_fake";
@@ -233,10 +238,18 @@ int main()
                     histos[nhits_tracker_string.c_str()]->Fill(muon_types[i].nhits_tracker_->At(i_mu));
                 }
             }
+
+            // Fill number of Reco and Fake objects per event
+            std::string reco_per_event_string = names[i] + "_reco_per_event";
+            histos[reco_per_event_string.c_str()]->Fill(muon_types[i].good_indexes_.size());
+            std::string fake_per_event_string = names[i] + "_fake_per_event";
+            histos[fake_per_event_string.c_str()]->Fill(*(muon_types[i].n_) - muon_types[i].good_indexes_.size());
             // Clear indexes event per event
             muon_types[i].good_indexes_.clear();
         }
+        ++n_events;
     }
+
     // Save all histograms
     std::filesystem::create_directory(RESULTS_FOLDER);
     auto dt_color = TColor::GetColorTransparent(kOrange - 2, 0.5);
@@ -267,8 +280,8 @@ int main()
                 std::cout << "Number of Fake " << name << ": " << histo->GetEntries() << '\n';
             }
         }
-
         c.SaveAs(Form("%s/%s.png", RESULTS_FOLDER.c_str(), name.c_str()));
         c.SaveAs(Form("%s/%s.pdf", RESULTS_FOLDER.c_str(), name.c_str()));
     }
+    std::cout << "Total number of events " << n_events << std::endl;
 }
