@@ -5,28 +5,28 @@
             "1 L3_IO_Tk": {
                 "label": "L3 IO inner tracks",
                 "legendEntry": "L3 IO Tracks",
-                "filename": "plots_ZMM_new_assoc_1k.root",
+                "filename": "plots_ZMM_new_assoc_full.root",
                 "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltIter2Phase2L3FromL1TkMuonMerged",
                 "plot": "nPixel_LayersWithMeas_vs_eta_prof"
             },
             "3 L3_OI_Tk": {
                 "label": "L3 OI inner tracks",
                 "legendEntry": "L3 OI Tracks",
-                "filename": "plots_ZMM_new_assoc_1k.root",
+                "filename": "plots_ZMM_new_assoc_full.root",
                 "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3OIMuonTrackSelectionHighPurity",
                 "plot": "nPixel_LayersWithMeas_vs_eta_prof"
             },
             "4 L3_Tk_merged": {
                 "label": "L3 inner tracks merged",
                 "legendEntry": "L3 Tracks Merged",
-                "filename": "plots_ZMM_new_assoc_1k.root",
+                "filename": "plots_ZMM_new_assoc_full.root",
                 "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3MuonMerged",
                 "plot": "nPixel_LayersWithMeas_vs_eta_prof"
             },
             "7 L3_Mu_ID": {
                 "label": "L3 Tracks Muon ID",
                 "legendEntry": "L3 Tracks Muon ID",
-                "filename": "plots_ZMM_new_assoc_1k.root",
+                "filename": "plots_ZMM_new_assoc_full.root",
                 "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3MuonTrks",
                 "plot": "nPixel_LayersWithMeas_vs_eta_prof"
             }

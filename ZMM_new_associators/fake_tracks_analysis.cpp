@@ -73,7 +73,7 @@ int main()
 
     gROOT->ProcessLine("gErrorIgnoreLevel = 1001;");
 
-    std::string FILE_PATH{"ntuples_ZMM_new_assoc_1k.root"};
+    std::string FILE_PATH{"ntuples_ZMM_new_assoc_full.root"};
     std::string RESULTS_FOLDER{"ntuples_results/"};
 
     // Plot booking
