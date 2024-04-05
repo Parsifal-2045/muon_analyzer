@@ -136,7 +136,7 @@ for keyPlot in config:
             histograms[iHisto].SetLineWidth(2)
             histograms[iHisto].SetMarkerStyle(markerMap[iHisto])
             histograms[iHisto].SetMarkerColor(colorMap[iHisto])
-            histograms[iHisto].SetMarkerSize(1.2)
+            histograms[iHisto].SetMarkerSize(1.5)
 
 
         # Setup canvas with all elements
