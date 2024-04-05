@@ -10,6 +10,7 @@
 #include "TFile.h"
 #include "TH1F.h"
 #include "TH2F.h"
+#include "TPaveStats.h"
 #include "TMath.h"
 #include "TROOT.h"
 #include "TTreeReader.h"
@@ -128,6 +129,12 @@ int main()
             histos[nhits_tracker_reco.c_str()] = new TH1I(nhits_tracker_reco.c_str(), "; Reco Tracks number of hits in the Tracker; Entries", 15, 0, 15);
         }
     }
+    // 2d plots
+    std::map<std::string, TH2 *> histos_2d;
+    histos_2d["n_l2_offline_vs_n_L1TkMu"] = new TH2F("l2_offline_vs_L1TkMu", "Number of L2 Offline Seeds vs Number of L1TkMu", 10, 0, 10, 30, 0, 30);
+    histos_2d["n_l2_from_L1TkMu_vs_n_L1TkMu"] = new TH2F("l2_from_L1TkMu_vs_L1TkMu", "Number of L2 Seeds from L1TkMu vs Number of L1TkMu", 10, 0, 10, 10, 0, 10);
+    histos_2d["n_l2_from_L1TkMu_vs_n_l2_offline"] = new TH2F("l2_from_L1TkMu_vs_l2_offline", "Number of L2 Seeds from L1TkMu vs Number of L2 Offline Seeds", 30, 0, 30, 10, 0, 10);
+    histos_2d["n_l2_muons_vs_n_L1TkMu"] = new TH2F("l2_muons_vs_L1TkMu", "Number of L2 Standalone Muons vs Number of L1TkMu", 10, 0, 10, 10, 0, 10);
 
     // Open the file containing the tree
     TFile *myFile = TFile::Open(FILE_PATH.c_str());
@@ -147,6 +154,11 @@ int main()
     {
         muon_types.emplace_back(reader, names[i].c_str());
     }
+
+    // L2 Seeds
+    TTreeReaderValue<Int_t> n_l2_seed{reader, "nl2_seed"};
+    TTreeReaderValue<Int_t> n_l2_seed_froml1{reader, "nl2_seed_froml1"};
+    TTreeReaderValue<Int_t> n_l2_mu{reader, "nl2_mu"};
 
     int n_events = 1;
     while (reader.Next())
@@ -253,7 +265,18 @@ int main()
             histos[fake_per_event_string.c_str()]->Fill(*(muon_types[i].n_) - muon_types[i].good_indexes_.size());
             // Clear indexes event per event
             muon_types[i].good_indexes_.clear();
-        }
+        } // End loop over muon types
+
+        // Fill 2D L2 muons/seeds plots
+        // #L2 Offline Seeds vs #L1TkMu
+        histos_2d["n_l2_offline_vs_n_L1TkMu"]->Fill(*(muon_types[0].n_), *n_l2_seed);
+        // #L2 Seeds From L1TkMu vs #L1TkMu
+        histos_2d["n_l2_from_L1TkMu_vs_n_L1TkMu"]->Fill(*(muon_types[0].n_), *n_l2_seed_froml1);
+        // #L2 Seeds From L1TkMu vs #L2 Offline Seeds
+        histos_2d["n_l2_from_L1TkMu_vs_n_l2_offline"]->Fill(*n_l2_seed, *n_l2_seed_froml1);
+        // #L2 Muons vs #L1TkMu
+        histos_2d["n_l2_muons_vs_n_L1TkMu"]->Fill(*(muon_types[0].n_), *n_l2_mu);
+
         ++n_events;
     }
 
@@ -261,6 +284,7 @@ int main()
     std::filesystem::create_directory(RESULTS_FOLDER);
     auto dt_color = TColor::GetColorTransparent(kOrange - 2, 0.5);
     bool print = true;
+    // 1D
     for (const auto &[name, histo] : histos)
     {
         TCanvas c{name.c_str(), name.c_str(), 3000, 1500};
@@ -290,5 +314,23 @@ int main()
         c.SaveAs(Form("%s/%s.png", RESULTS_FOLDER.c_str(), name.c_str()));
         c.SaveAs(Form("%s/%s.pdf", RESULTS_FOLDER.c_str(), name.c_str()));
     }
+    // 2D
+    for (const auto &[name, histo] : histos_2d)
+    {
+        TCanvas c{name.c_str(), name.c_str(), 3000, 1500};
+        c.SetGrid();
+
+        histo->Draw("COLZ");
+        c.Update();
+        TPaveStats* stats = (TPaveStats*)c.GetPrimitive("stats");
+        stats->SetX1NDC(0.75);
+        stats->SetX2NDC(0.9);
+        stats->SetY1NDC(0.65);
+        stats->SetY2NDC(0.9);
+
+        c.SaveAs(Form("%s/%s.png", RESULTS_FOLDER.c_str(), name.c_str()));
+        c.SaveAs(Form("%s/%s.pdf", RESULTS_FOLDER.c_str(), name.c_str()));
+    }
+
     std::cout << "Total number of events " << n_events << std::endl;
 }
