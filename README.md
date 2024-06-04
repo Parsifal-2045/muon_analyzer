@@ -2,18 +2,37 @@
 Plotter and configurations for preliminary muon HLT performance analysis for Phase 2 of the CMS experiment.
 
 ## Contents
-All root files, plots and timing information can be found on [this website](https://lferragi.web.cern.ch/) (requires CERN login). Unless stated otherwise, results are obtained from CMSSW 14_0_0 with D98 geometry and Phase2 conditions. 
+All root files, plots and timing information can be found on [this website](https://lferragi.web.cern.ch/) (requires CERN login). Unless stated otherwise
+- results in [14_0_X](/14_0_X/) are obtained from CMSSW 14_0_0 with D98 geometry and Phase2 conditions
+- results in [14_1_0_pre3](/14_1_0_pre3/) are obtained from 14_1_0_pre3 with D110 geometry with Phase2 conditions.
+The former are now deprecated and all new developments will be on top of CMSSW 14_1_0_pre3
 
-### Single Mu 200PU sample
+### [Single Mu no PU sample](/14_1_0_pre3/SingleMu_phase2/)
+SingleMu RelVal for matching testing 
+- [dR_matching](/14_1_0_pre3/SingleMu_phase2/dR_matching/): matching logic associates stubs with segments that are within a dR window of 0.1 in both DTs and CSCs
+- [dPhi+dTheta_matching](/14_1_0_pre3/SingleMu_phase2/dPhi+nHits_matching/): matching logic associates stubs with segments checking in a dPhi window first (0.1), if multiple segments are found in the same window the number of hits in phi (DT) or the total number of hits (CSC) is checked, if there still are multiple matches a window in dTheta is opened (???), finally the hit multiplicity in Theta is checked (DT-only). Logic implemented for barrel and endcap, overlap still relies on dR matching
+- [dR_matching](/14_1_0_pre3/SingleMu_phase2/full_new_matching/): extension of new matching logic to the overlap region
+
+### [ZMM current](/14_1_0_pre3/ZMM_current/)
+Current performance on ZMM events with 200PU in phase2 conditions
+
+### [ZMM Phase2](/14_1_0_pre3/ZMM_phase2/)
+Various performance measurements on ZMM events with 200PU in phase2 conditions
+
+### [PU segments complexity](/14_1_0_pre3/PU_segments_complexity/)
+Number of DT/CSC segments per event in ZMM events with 200PU
+
+### Deprecated 14_0_X
+
+#### Single Mu 200PU sample
 9k events of Single Mu with 200PU from eos
 
-- [purity_cut_0.75](/purity_cut_0.75/): Preliminary analysis 
-- [purity_cut_0.25](/purity_cut_0.25/): Check effects of reduced purity cut in the associators for muons and muon tracks
-- [no_purity_cut](/no_purity_cut/): Check effects of reduced purity cut in the associators for muons and muon tracks
-- [purity_vs_quality](/purity_vs_quality/): Results of purity cut analysis: no major changes when relaxing the purity cuts
+- [purity_cut_0.75](/14_0_X/purity_cut_0.75/): Preliminary analysis 
+- [purity_cut_0.25](/14_0_X/purity_cut_0.25/): Check effects of reduced purity cut in the associators for muons and muon tracks
+- [no_purity_cut](/14_0_X/no_purity_cut/): Check effects of reduced purity cut in the associators for muons and muon tracks
+- [purity_vs_quality](/14_0_X/purity_vs_quality/): Results of purity cut analysis: no major changes when relaxing the purity cuts
 
-### ZMM
+#### ZMM
 18k events of ZMM with 200PU from eos
 
-- [ZMM](/ZMM/): Features of reconstructed muons 
-- [ntuples](/ntuples/): Analysis of Fake and Reco tracks to understand where the contamination comes from
+- [ZMM](/14_0_X/ZMM_new_associators/): Features of reconstructed muons 
