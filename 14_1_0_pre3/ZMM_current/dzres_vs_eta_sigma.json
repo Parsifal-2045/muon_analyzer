@@ -5,29 +5,22 @@
             "1 L3_IO_Tk": {
                 "label": "L3 IO inner tracks",
                 "legendEntry": "L3 IO Tracks",
-                "filename": "plots_current_ZMM_PU_1k.root",
+                "filename": "14_1_0_pre3/ZMM_current/plots_current_ZMM_PU_1k.root",
                 "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltIter2Phase2L3FromL1TkMuonMerged",
                 "plot": "dzres_vs_eta_Sigma"
             },
             "3 L3_OI_Tk": {
                 "label": "L3 OI inner tracks",
                 "legendEntry": "L3 OI Tracks",
-                "filename": "plots_current_ZMM_PU_1k.root",
+                "filename": "14_1_0_pre3/ZMM_current/plots_current_ZMM_PU_1k.root",
                 "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3OIMuonTrackSelectionHighPurity",
                 "plot": "dzres_vs_eta_Sigma"
             },
             "4 L3_Tk_merged": {
                 "label": "L3 inner tracks merged",
                 "legendEntry": "L3 Tracks Merged",
-                "filename": "plots_current_ZMM_PU_1k.root",
+                "filename": "14_1_0_pre3/ZMM_current/plots_current_ZMM_PU_1k.root",
                 "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3MuonMerged",
-                "plot": "dzres_vs_eta_Sigma"
-            },
-            "7 L3_Mu_ID": {
-                "label": "L3 Tracks Muon ID",
-                "legendEntry": "L3 Tracks Muon ID",
-                "filename": "plots_current_ZMM_PU_1k.root",
-                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3MuonTrks",
                 "plot": "dzres_vs_eta_Sigma"
             }
         },
@@ -44,7 +37,7 @@
             ],
             "option": "",
             "legendTitle": "dz Residual vs eta sigma",
-            "caption": "Z PU200 CMSSW 14_0_0",
+            "caption": "Z PU200 CMSSW 14_1_0_pre3",
             "logo": [
                 "CMS",
                 "Work In Progress"
@@ -52,14 +45,12 @@
             "colorMap": [
                 866,
                 922,
-                902,
-                801
+                902
             ],
             "markerMap": [
                 23,
                 21,
-                20,
-                34
+                20
             ],
             "legendRange": [
                 0.45,
@@ -69,7 +60,7 @@
             ]
         },
         "output": {
-            "directory": "ZMM_current/plots/",
+            "directory": "14_1_0_pre3/ZMM_current/plots",
             "filenamePlot": "dzres_vs_eta_Sigma",
             "fileType": [
                 "png",
