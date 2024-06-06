@@ -140,7 +140,7 @@ for keyPlot in config:
 
 
         # Setup canvas with all elements
-        canvas = TCanvas('canvas', 'canvas', 800, 800)
+        canvas = TCanvas('canvas', 'canvas', 1000, 1000)
 
         pad = TPad('pad', 'pad', 0.01, 0.00, 1.00, 1.00)
  
