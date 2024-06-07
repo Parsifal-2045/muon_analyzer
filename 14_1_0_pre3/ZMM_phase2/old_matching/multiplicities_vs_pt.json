@@ -1,56 +1,56 @@
 {
-    "Multiplicities vs eta": {
-        "comment": "L2 muons and L1TkMuons multiplicities vs eta",
+    "Multiplicities vs pT": {
+        "comment": "Multiplicities vs pT",
         "inputs": {
             "1 L3_IO_Tk": {
                 "label": "L3 IO inner tracks",
                 "legendEntry": "L3 IO Tracks",
-                "filename": "14_1_0_pre3/ZMM_phase2/plots_new2_phase2_ZMM_PU.root",
+                "filename": "14_1_0_pre3/ZMM_phase2/old_matching/plots_new2_phase2_ZMM_PU.root",
                 "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltIter2Phase2L3FromL1TkMuonMerged",
-                "plot": "num_reco_eta"
+                "plot": "num_reco_pT"
             },
             "2 L2_Muon": {
                 "label": "L2 standalone muons from L1Tk",
                 "legendEntry": "L2 standalone Muons",
-                "filename": "14_1_0_pre3/ZMM_phase2/plots_new2_phase2_ZMM_PU.root",
+                "filename": "14_1_0_pre3/ZMM_phase2/old_matching/plots_new2_phase2_ZMM_PU.root",
                 "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltL2MuonsFromL1TkMuon_UpdAtVtx",
-                "plot": "num_reco_eta"
+                "plot": "num_reco_pT"
             },
             "3 L3_OI_Tk": {
                 "label": "L3 OI inner tracks",
                 "legendEntry": "L3 OI Tracks",
-                "filename": "14_1_0_pre3/ZMM_phase2/plots_new2_phase2_ZMM_PU.root",
+                "filename": "14_1_0_pre3/ZMM_phase2/old_matching/plots_new2_phase2_ZMM_PU.root",
                 "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3OIMuonTrackSelectionHighPurity",
-                "plot": "num_reco_eta"
+                "plot": "num_reco_pT"
             },
             "4 L3_Tk_merged": {
                 "label": "L3 inner tracks merged",
                 "legendEntry": "L3 Tracks Merged",
-                "filename": "14_1_0_pre3/ZMM_phase2/plots_new2_phase2_ZMM_PU.root",
+                "filename": "14_1_0_pre3/ZMM_phase2/old_matching/plots_new2_phase2_ZMM_PU.root",
                 "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3MuonMerged",
-                "plot": "num_reco_eta"
+                "plot": "num_reco_pT"
             },
             "5 L3_Mu_global": {
                 "label": "L3 global Muons",
                 "legendEntry": "L3 Global Muons",
-                "filename": "14_1_0_pre3/ZMM_phase2/plots_new2_phase2_ZMM_PU.root",
+                "filename": "14_1_0_pre3/ZMM_phase2/old_matching/plots_new2_phase2_ZMM_PU.root",
                 "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3GlbMuon",
-                "plot": "num_reco_eta"
+                "plot": "num_reco_pT"
             }
         },
         "plot": {
             "x": [
-                -2.5,
-                2.5,
-                "#eta"
+                1.0,
+                80,
+                "pT"
             ],
             "y": [
                 0,
-                2000,
+                20000,
                 "Occurrences"
             ],
             "option": "",
-            "legendTitle": "Multiplicities vs eta",
+            "legendTitle": "Multiplicities vs pT",
             "caption": "Z PU200 CMSSW 14_1_0_pre3",
             "logo": [
                 "CMS",
@@ -78,8 +78,8 @@
             ]
         },
         "output": {
-            "directory": "14_1_0_pre3/ZMM_phase2/new2_plots",
-            "filenamePlot": "multiplicities_vs_eta",
+            "directory": "14_1_0_pre3/ZMM_phase2/old_matching/new2_plots",
+            "filenamePlot": "multiplicities_vs_pt",
             "fileType": [
                 "png",
                 "pdf"
