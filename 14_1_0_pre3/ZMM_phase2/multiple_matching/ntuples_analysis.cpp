@@ -74,7 +74,7 @@ int main()
 
     gROOT->ProcessLine("gErrorIgnoreLevel = 1001;");
 
-    std::string FILE_PATH{"phase2_multiple_matching_ZMM_1k.root"};
+    std::string FILE_PATH{"phase2_multiple_matching_ZMM_15k.root"};
     std::string RESULTS_FOLDER{"ntuples_plots/"};
 
     // Plot booking
