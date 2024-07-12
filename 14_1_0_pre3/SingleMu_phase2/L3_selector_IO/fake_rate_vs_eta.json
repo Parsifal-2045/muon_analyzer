@@ -1,0 +1,89 @@
+{
+    "Fake rate vs eta": {
+        "comment": "Fake rate vs eta",
+        "inputs": {
+            "1 L2_Muon": {
+                "label": "L2 standalone muons from L1Tk",
+                "legendEntry": "L2 standalone Muons",
+                "filename": "14_1_0_pre3/SingleMu_phase2/L3_selector_IO/plots_L3_selector_IO_first_SingleMu_1k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltL2MuonsFromL1TkMuon_UpdAtVtx",
+                "plot": "fakerate_vs_eta"
+            },
+            "2 L3_IO_Tk": {
+                "label": "L3 IO inner tracks",
+                "legendEntry": "L3 IO Tracks",
+                "filename": "14_1_0_pre3/SingleMu_phase2/L3_selector_IO/plots_L3_selector_IO_first_SingleMu_1k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltIter2Phase2L3FromL1TkMuonMerged",
+                "plot": "fakerate_vs_eta"
+            },
+            "3 L3_OI_Tk": {
+                "label": "L3 OI inner tracks",
+                "legendEntry": "L3 OI Tracks",
+                "filename": "14_1_0_pre3/SingleMu_phase2/L3_selector_IO/plots_L3_selector_IO_first_SingleMu_1k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3OIMuonTrackSelectionHighPurity",
+                "plot": "fakerate_vs_eta"
+            },
+            "4 L3_Tk_merged": {
+                "label": "L3 inner tracks merged",
+                "legendEntry": "L3 Tracks Merged",
+                "filename": "14_1_0_pre3/SingleMu_phase2/L3_selector_IO/plots_L3_selector_IO_first_SingleMu_1k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3MuonMerged",
+                "plot": "fakerate_vs_eta"
+            },
+            "5 L3_Mu_global": {
+                "label": "L3 global Muons",
+                "legendEntry": "L3 Global Muons",
+                "filename": "14_1_0_pre3/SingleMu_phase2/L3_selector_IO/plots_L3_selector_IO_first_SingleMu_1k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3GlbMuon",
+                "plot": "fakerate_vs_eta"
+            }
+        },
+        "plot": {
+            "x": [
+                -2.5,
+                2.5,
+                "#eta"
+            ],
+            "y": [
+                0,
+                0.2,
+                "Fake rate"
+            ],
+            "option": "",
+            "legendTitle": "Fake rate vs eta",
+            "caption": "SingleMu no PU CMSSW 14_1_0_pre3",
+            "logo": [
+                "CMS",
+                "Work In Progress"
+            ],
+            "colorMap": [
+                834,
+                866,
+                922,
+                902,
+                885
+            ],
+            "markerMap": [
+                27,
+                23,
+                21,
+                20,
+                24
+            ],
+            "legendRange": [
+                0.45,
+                0.67,
+                0.90,
+                0.85
+            ]
+        },
+        "output": {
+            "directory": "14_1_0_pre3/SingleMu_phase2/L3_selector_IO/plots",
+            "filenamePlot": "fake_rate_vs_eta",
+            "fileType": [
+                "png",
+                "pdf"
+            ]
+        }
+    }
+}
