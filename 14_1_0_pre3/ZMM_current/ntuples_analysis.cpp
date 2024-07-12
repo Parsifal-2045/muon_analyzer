@@ -129,10 +129,10 @@ int main()
     }
     // 2d plots
     std::map<std::string, TH2 *> histos_2d;
-    histos_2d["n_l2_offline_vs_n_L1TkMu"] = new TH2F("l2_offline_vs_L1TkMu", "Number of L2 Offline Seeds vs Number of L1TkMu", 10, 0, 10, 30, 0, 30);
-    histos_2d["n_l2_from_L1TkMu_vs_n_L1TkMu"] = new TH2F("l2_from_L1TkMu_vs_L1TkMu", "Number of L2 Seeds from L1TkMu vs Number of L1TkMu", 10, 0, 10, 10, 0, 10);
-    histos_2d["n_l2_from_L1TkMu_vs_n_l2_offline"] = new TH2F("l2_from_L1TkMu_vs_l2_offline", "Number of L2 Seeds from L1TkMu vs Number of L2 Offline Seeds", 30, 0, 30, 10, 0, 10);
-    histos_2d["n_l2_muons_vs_n_L1TkMu"] = new TH2F("l2_muons_vs_L1TkMu", "Number of L2 Standalone Muons vs Number of L1TkMu", 10, 0, 10, 10, 0, 10);
+    histos_2d["n_l2_offline_vs_n_L1TkMu"] = new TH2F("l2_offline_vs_L1TkMu", "Number of L2 Offline Seeds vs Number of L1TkMu; # L1TkMu; # L2 offline seeds", 10, 0, 10, 30, 0, 30);
+    histos_2d["n_l2_from_L1TkMu_vs_n_L1TkMu"] = new TH2F("l2_from_L1TkMu_vs_L1TkMu", "Number of L2 Seeds from L1TkMu vs Number of L1TkMu; # L1TkMu; # L2 seeds", 10, 0, 10, 10, 0, 10);
+    histos_2d["n_l2_from_L1TkMu_vs_n_l2_offline"] = new TH2F("l2_from_L1TkMu_vs_l2_offline", "Number of L2 Seeds from L1TkMu vs Number of L2 Offline Seeds; # L2 offline seeds; # L2 seeds from L1TkMu", 30, 0, 30, 10, 0, 10);
+    histos_2d["n_l2_muons_vs_n_L1TkMu"] = new TH2F("l2_muons_vs_L1TkMu", "Number of L2 Standalone Muons vs Number of L1TkMu; # L1TkMu; # L2 standalone muons", 10, 0, 10, 10, 0, 10);
 
     // Open the file containing the tree
     TFile *myFile = TFile::Open(FILE_PATH.c_str());
