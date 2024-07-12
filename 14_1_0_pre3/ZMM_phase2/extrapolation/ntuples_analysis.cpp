@@ -82,9 +82,11 @@ int main()
     // Gen
     histos["gen_mu_eta"] = new TH1F("gen_mu_eta", ";Gen #mu #eta;Entries", 100, -2.5, 2.5);
     histos["gen_mu_phi"] = new TH1F("gen_mu_phi", ";Gen #mu #phi;Entries", 100, -TMath::Pi(), TMath::Pi());
+    histos["gen_mu_pt"] = new TH1F("gen_mu_pt", ";Gen #mu pt;Entries", 100, 0, 100);
 
     // L2 seeds from L1TkMu
     histos["l2_seed_pt"] = new TH1F("l2_seed_pt", ";pT;Entries", 100, 0., 100.);
+    histos["l2_seed_delta_pt"] = new TH1F("l2_seed_delta_pt", "; #Delta pT;Entries", 100, 0, 5);
     histos["l2_seed_nhits"] = new TH1I("l2_seed_nhits", ";# of DT/CSC segments per L2 seed; Entries", 10, 0, 10);
 
     // Reco and Fake
@@ -111,6 +113,8 @@ int main()
         histos[phi.c_str()] = new TH1F(phi.c_str(), "; #phi; Entries", nbins, -TMath::Pi(), TMath::Pi());
         std::string delta_R = names[i] + "_delta_R";
         histos[delta_R.c_str()] = new TH1F(delta_R.c_str(), "; #Delta R; Entries", nbins, 0, max_deltaR_plot);
+        std::string delta_pt = names[i] + "_delta_pt";
+        histos[delta_pt.c_str()] = new TH1F(delta_pt.c_str(), "; #Delta pT; Entries", nbins, 0, 5);
         std::string pt_fake = names[i] + "_pt_fake";
         histos[pt_fake.c_str()] = new TH1F(pt_fake.c_str(), "; Fake track pT; Entries", nbins, 0, 50);
         std::string pt_reco = names[i] + "_pt_reco";
@@ -135,14 +139,14 @@ int main()
     // 2d plots
     std::map<std::string, TH2 *> histos_2d;
     // phase2 seeds and l2 muons
-    histos_2d["n_phase2_l2_from_L1TkMu_vs_n_L1TkMu"] = new TH2F("phase2_l2_from_L1TkMu_vs_L1TkMu", "Number of L2 Seeds from L1TkMu vs Number of L1TkMu", 10, 0, 10, 10, 0, 10);
-    histos_2d["n_l2_muons_vs_n_L1TkMu"] = new TH2F("l2_muons_vs_L1TkMu", "Number of L2 Standalone Muons vs Number of L1TkMu", 10, 0, 10, 10, 0, 10);
-    histos_2d["phase2_l2_seed_pt_vs_eta"] = new TH2F("phase2_l2_seed_pt_vs_eta", "Phase2 L2 seeds pT vs #eta", 100, -2.5, 2.5, 100, 0, 100);
-    histos_2d["n_phase2_l2_per_n_L1TkMu_vs_eta"] = new TH2F("n_phase2_l2_per_n_L1TkMu_vs_eta", "Number of L2 Seeds per L1TkMu vs L1TkMu #eta", 100, -2.5, 2.5, 10, 0, 10);
+    histos_2d["n_phase2_l2_from_L1TkMu_vs_n_L1TkMu"] = new TH2F("phase2_l2_from_L1TkMu_vs_L1TkMu", "Number of L2 Seeds from L1TkMu vs Number of L1TkMu; # L1TkMu; # Phase 2 L2 seeds", 10, 0, 10, 10, 0, 10);
+    histos_2d["n_l2_muons_vs_n_L1TkMu"] = new TH2F("l2_muons_vs_L1TkMu", "Number of L2 Standalone Muons vs Number of L1TkMu; # L1TkMu; # L2 standalone muons", 10, 0, 10, 10, 0, 10);
+    histos_2d["phase2_l2_seed_pt_vs_eta"] = new TH2F("phase2_l2_seed_pt_vs_eta", "Phase 2 L2 seeds pT vs #eta; #eta; Phase 2 L2 seeds pT", 100, -2.5, 2.5, 100, 0, 100);
+    histos_2d["n_phase2_l2_per_n_L1TkMu_vs_eta"] = new TH2F("n_phase2_l2_per_n_L1TkMu_vs_eta", "Number of L2 Seeds per L1TkMu vs L1TkMu #eta; L1TkMu #eta; # Phase 2 L2 seeds per L1TkMu", 100, -2.5, 2.5, 10, 0, 10);
     // cosmics
-    histos_2d["n_l2_cosmic_seed_vs_n_L1TkMu"] = new TH2F("n_l2_cosmic_seed_vs_n_L1TkMu", "Number of cosmics seeds (displaced) vs Number of L1TkMu", 20, 0, 20, 20, 0, 20);
-    histos_2d["n_l2_cosmic_seed_from_l1_vs_n_L1TkMu"] = new TH2F("n_l2_cosmic_seed_from_l1_vs_n_L1TkMu", "Number of cosmics seeds from L1TMu (displaced) vs Number of L1TkMu", 10, 0, 10, 10, 0, 10);
-    histos_2d["n_l2_cosmic_mu_vs_n_L1TkMu"] = new TH2F("n_l2_cosmic_mu_vs_n_L1TkMu", "Number of L2 cosmic Muons (displaced) vs Number of L1TkMu", 10, 0, 10, 10, 0, 10);
+    histos_2d["n_l2_cosmic_seed_vs_n_L1TkMu"] = new TH2F("n_l2_cosmic_seed_vs_n_L1TkMu", "Number of cosmics seeds (displaced) vs Number of L1TkMu; # L1TkMu; # Displaced seeds", 20, 0, 20, 20, 0, 20);
+    histos_2d["n_l2_cosmic_seed_from_l1_vs_n_L1TkMu"] = new TH2F("n_l2_cosmic_seed_from_l1_vs_n_L1TkMu", "Number of cosmics seeds from L1TMu (displaced) vs Number of L1TkMu; # L1TkMu; # Displaced seeds from L1TkMu", 10, 0, 10, 10, 0, 10);
+    histos_2d["n_l2_cosmic_mu_vs_n_L1TkMu"] = new TH2F("n_l2_cosmic_mu_vs_n_L1TkMu", "Number of L2 cosmic Muons (displaced) vs Number of L1TkMu; # L1TkMu; # L2 displaced muons", 10, 0, 10, 10, 0, 10);
 
     // Open the file containing the tree
     TFile *myFile = TFile::Open(FILE_PATH.c_str());
@@ -153,6 +157,7 @@ int main()
     TTreeReaderValue<Int_t> n_gen{reader, "nGenPart"};
     TTreeReaderArray<Float_t> gen_eta{reader, "GenPart_eta"};
     TTreeReaderArray<Float_t> gen_phi{reader, "GenPart_phi"};
+    TTreeReaderArray<Float_t> gen_pt{reader, "GenPart_pt"};
     TTreeReaderArray<Int_t> gen_pdgId{reader, "GenPart_pdgId"};
     TTreeReaderArray<Int_t> gen_status{reader, "GenPart_status"};
 
@@ -179,7 +184,7 @@ int main()
     while (reader.Next())
     {
         std::vector<int> gen_index;
-        // Fill GEN plots eta, phi
+        // Fill GEN plots eta, phi, pT
         for (int i_gen = 0; i_gen < *n_gen; ++i_gen)
         {
             if (!(std::abs(gen_pdgId[i_gen]) == 13 && gen_status[i_gen] == 1))
@@ -188,6 +193,7 @@ int main()
             }
             histos["gen_mu_eta"]->Fill(gen_eta[i_gen]);
             histos["gen_mu_phi"]->Fill(gen_phi[i_gen]);
+            histos["gen_mu_pt"]->Fill(gen_pt[i_gen]);
             gen_index.push_back(i_gen);
         }
 
@@ -214,18 +220,22 @@ int main()
         }
 
         // Delta R for all muon types
-        // Loop over gen_index to get delta_R
+        // Loop over gen_index to get delta_R and delta_pt
         for (auto i_gen : gen_index)
         {
+            // delta_R and delta_pt for muons and muon tracks
             for (std::size_t i = 0; i != names.size(); ++i)
             {
                 std::string delta_R_string = names[i] + "_delta_R";
+                std::string delta_pt_string = names[i] + "_delta_pt";
                 for (int i_mu = 0; i_mu < *(muon_types[i].n_); ++i_mu)
                 {
                     float delta_eta = gen_eta[i_gen] - muon_types[i].eta_[i_mu];
                     float delta_phi = std::acos(std::cos(gen_phi[i_gen] - muon_types[i].phi_[i_mu]));
                     float delta_R = std::sqrt(delta_eta * delta_eta + delta_phi * delta_phi);
                     histos[delta_R_string.c_str()]->Fill(delta_R);
+                    float delta_pt = std::abs(gen_pt[i_gen] - muon_types[i].pt_[i_mu]);
+                    histos[delta_pt_string.c_str()]->Fill(delta_pt);
                     // Reco Tracks
                     float max_delta_R = names[i].substr(0, 2) == "l2" ? 0.05 : 0.01;
                     if (delta_R < max_delta_R)
@@ -251,6 +261,12 @@ int main()
                     // Wait to end the loop before considering fake tracks
                     // One reco could be fake for one of the two GEN Mu from Z
                 }
+            }
+            // delta_pt for phase2 seeds
+            for (int i_seed = 0; i_seed != *n_phase2_l2_seed; ++i_seed)
+            {
+                float delta_pt = std::abs(gen_pt[i_gen] - l2_seed_pt[i_seed]);
+                histos["l2_seed_delta_pt"]->Fill(delta_pt);
             }
         } // End loop over gen_index
 
