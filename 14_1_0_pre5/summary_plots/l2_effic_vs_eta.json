@@ -1,0 +1,71 @@
+{
+    "Efficiency vs eta for L2 Standalone Muons": {
+        "comment": "Efficiency vs eta for L2 Standalone Muons",
+        "inputs": {
+            "1 current": {
+                "label": "Current L2 Standalone Muons",
+                "legendEntry": "Current L2 Standalone Muons",
+                "filename": "summary_plots/data/plots_current_summary_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltL2MuonsFromL1TkMuon_UpdAtVtx",
+                "plot": "effic_vs_eta"
+            },
+            "2 IO_first": {
+                "label": "IO_first L2 Standalone Muons",
+                "legendEntry": "IO first L2 Standalone Muons",
+                "filename": "summary_plots/data/plots_IO_first_summary_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltL2MuonsFromL1TkMuon_UpdAtVtx",
+                "plot": "effic_vs_eta"
+            },
+            "3 OI_first": {
+                "label": "OI_first L2 Standalone Muons",
+                "legendEntry": "OI first L2 Standalone Muons",
+                "filename": "summary_plots/data/plots_OI_first_summary_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltL2MuonsFromL1TkMuon_UpdAtVtx",
+                "plot": "effic_vs_eta"
+            }
+        },
+        "plot": {
+            "x": [
+                -2.5,
+                2.5,
+                "#eta"
+            ],
+            "y": [
+                0.8,
+                1.0,
+                "Efficiency"
+            ],
+            "option": "",
+            "legendTitle": "Efficiency vs eta",
+            "caption": "Z PU200 CMSSW 14_1_0_pre5",
+            "logo": [
+                "CMS",
+                "Work In Progress"
+            ],
+            "colorMap": [
+                866,
+                902,
+                797
+            ],
+            "markerMap": [
+                23,
+                21,
+                20
+            ],
+            "legendRange": [
+                0.45,
+                0.67,
+                0.90,
+                0.85
+            ]
+        },
+        "output": {
+            "directory": "summary_plots/comparison",
+            "filenamePlot": "l2_effic_vs_eta",
+            "fileType": [
+                "png",
+                "pdf"
+            ]
+        }
+    }
+}

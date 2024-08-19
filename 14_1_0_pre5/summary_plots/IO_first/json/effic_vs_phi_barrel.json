@@ -1,0 +1,107 @@
+{
+    "Efficiency vs phi": {
+        "comment": "Efficiency vs phi for all validators",
+        "inputs": {
+            "1 L2_Muon": {
+                "label": "L2 Standalone muons from L1Tk",
+                "legendEntry": "L2 Standalone Muons",
+                "filename": "summary_plots/data/plots_OI_first_summary_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltL2MuonsFromL1TkMuon_UpdAtVtx",
+                "plot": "effic_vs_phi_barrel"
+            },
+            "2 L3_IO_Tk": {
+                "label": "L3 IO inner tracks",
+                "legendEntry": "L3 IO Tracks",
+                "filename": "summary_plots/data/plots_OI_first_summary_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltIter2Phase2L3FromL1TkMuonMerged",
+                "plot": "effic_vs_phi_barrel"
+            },
+            "3 L3_OI_Tk": {
+                "label": "L3 OI inner tracks",
+                "legendEntry": "L3 OI Tracks",
+                "filename": "summary_plots/data/plots_OI_first_summary_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3OIMuonTrackSelectionHighPurity",
+                "plot": "effic_vs_phi_barrel"
+            },
+            "4 L3_Tk_merged": {
+                "label": "L3 inner tracks merged",
+                "legendEntry": "L3 Tracks Merged",
+                "filename": "summary_plots/data/plots_OI_first_summary_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3MuonMerged",
+                "plot": "effic_vs_phi_barrel"
+            },
+            "5 L3_Mu_global": {
+                "label": "L3 global Muons",
+                "legendEntry": "L3 Global Muons",
+                "filename": "summary_plots/data/plots_OI_first_summary_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3GlbMuon",
+                "plot": "effic_vs_phi_barrel"
+            },
+            "6 L3_Mu_ID": {
+                "label": "Muon ID",
+                "legendEntry": "Muon ID",
+                "filename": "summary_plots/data/plots_OI_first_summary_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltL3MuonIdTrks",
+                "plot": "effic_vs_phi_barrel"
+            },
+            "7 L2_seeds_tracks": {
+                "label": "L2 Seeds",
+                "legendEntry": "L2 Seeds",
+                "filename": "summary_plots/data/plots_OI_first_summary_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/muonL2SeedTrks",
+                "plot": "effic_vs_phi_barrel"
+            }
+        },
+        "plot": {
+            "x": [
+                -3.14,
+                3.14,
+                "#phi"
+            ],
+            "y": [
+                0.0,
+                1.0,
+                "Efficiency (Barrel)"
+            ],
+            "option": "",
+            "legendTitle": "Efficiency vs phi in the Barrel",
+            "caption": "Z PU200 CMSSW 14_1_0_pre5",
+            "logo": [
+                "CMS",
+                "Work In Progress"
+            ],
+            "colorMap": [
+                834,
+                866,
+                922,
+                902,
+                885,
+                797,
+                1
+            ],
+            "markerMap": [
+                27,
+                23,
+                21,
+                20,
+                24,
+                34,
+                58
+            ],
+            "legendRange": [
+                0.45,
+                0.67,
+                0.90,
+                0.85
+            ]
+        },
+        "output": {
+            "directory": "summary_plots/IO_first",
+            "filenamePlot": "effic_vs_phi_barrel",
+            "fileType": [
+                "png",
+                "pdf"
+            ]
+        }
+    }
+}

@@ -1,0 +1,89 @@
+{
+    "Hits in the tracker vs eta": {
+        "comment": "Hits in the tracker vs eta for L3 validators",
+        "inputs": {
+            "1 L3_IO_Tk": {
+                "label": "L3 IO inner tracks",
+                "legendEntry": "L3 IO Tracks",
+                "filename": "summary_plots/data/plots_OI_first_summary_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltIter2Phase2L3FromL1TkMuonMerged",
+                "plot": "nTRK_LayersWithMeas_vs_eta_prof"
+            },
+            "3 L3_OI_Tk": {
+                "label": "L3 OI inner tracks",
+                "legendEntry": "L3 OI Tracks",
+                "filename": "summary_plots/data/plots_OI_first_summary_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3OIMuonTrackSelectionHighPurity",
+                "plot": "nTRK_LayersWithMeas_vs_eta_prof"
+            },
+            "4 L3_Tk_merged": {
+                "label": "L3 inner tracks merged",
+                "legendEntry": "L3 Tracks Merged",
+                "filename": "summary_plots/data/plots_OI_first_summary_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3MuonMerged",
+                "plot": "nTRK_LayersWithMeas_vs_eta_prof"
+            },
+            "5 L3_Mu_global": {
+                "label": "L3 global Muons",
+                "legendEntry": "L3 Global Muons",
+                "filename": "summary_plots/data/plots_OI_first_summary_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3GlbMuon",
+                "plot": "nTRK_LayersWithMeas_vs_eta_prof"
+            },
+            "6 L3_Mu_ID": {
+                "label": "Muon ID",
+                "legendEntry": "Muon ID",
+                "filename": "summary_plots/data/plots_OI_first_summary_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltL3MuonIdTrks",
+                "plot": "nTRK_LayersWithMeas_vs_eta_prof"
+            }
+        },
+        "plot": {
+            "x": [
+                -2.5,
+                2.5,
+                "eta"
+            ],
+            "y": [
+                0,
+                18,
+                "Number of hits in the tracker"
+            ],
+            "option": "",
+            "legendTitle": "Hits in the tracker vs eta",
+            "caption": "Z PU200 CMSSW 14_1_0_pre5",
+            "logo": [
+                "CMS",
+                "Work In Progress"
+            ],
+            "colorMap": [
+                866,
+                922,
+                902,
+                885,
+                797
+            ],
+            "markerMap": [
+                23,
+                21,
+                20,
+                24,
+                34
+            ],
+            "legendRange": [
+                0.65,
+                0.67,
+                0.90,
+                0.85
+            ]
+        },
+        "output": {
+            "directory": "summary_plots/current",
+            "filenamePlot": "nhits_tracker_vs_eta",
+            "fileType": [
+                "png",
+                "pdf"
+            ]
+        }
+    }
+}

@@ -1,0 +1,71 @@
+{
+    "Fakerate vs eta for L3 IO inner tracks": {
+        "comment": "Fakerate vs eta for L3 IO inner tracks",
+        "inputs": {
+            "1 current": {
+                "label": "Current L3 IO inner tracks",
+                "legendEntry": "Current L3 IO inner tracks",
+                "filename": "summary_plots/data/plots_current_summary_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltIter2Phase2L3FromL1TkMuonMerged",
+                "plot": "fakerate_vs_eta"
+            },
+            "2 IO_first": {
+                "label": "IO_first L3 IO inner tracks",
+                "legendEntry": "IO first L3 IO inner tracks",
+                "filename": "summary_plots/data/plots_IO_first_summary_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/phase2L3FilteredObjects_L3IOTrksFiltered",
+                "plot": "fakerate_vs_eta"
+            },
+            "3 OI_first": {
+                "label": "OI_first L3 IO inner tracks",
+                "legendEntry": "OI first L3 IO inner tracks",
+                "filename": "summary_plots/data/plots_OI_first_summary_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltIter2Phase2L3FromL1TkMuonMerged",
+                "plot": "fakerate_vs_eta"
+            }
+        },
+        "plot": {
+            "x": [
+                -2.5,
+                2.5,
+                "#eta"
+            ],
+            "y": [
+                0,
+                1.0,
+                "Fakerate"
+            ],
+            "option": "",
+            "legendTitle": "Fakerate vs eta",
+            "caption": "Z PU200 CMSSW 14_1_0_pre5",
+            "logo": [
+                "CMS",
+                "Work In Progress"
+            ],
+            "colorMap": [
+                866,
+                902,
+                797
+            ],
+            "markerMap": [
+                23,
+                21,
+                20
+            ],
+            "legendRange": [
+                0.45,
+                0.67,
+                0.90,
+                0.85
+            ]
+        },
+        "output": {
+            "directory": "summary_plots/comparison",
+            "filenamePlot": "l3_IO_tracks_fakerate_vs_eta",
+            "fileType": [
+                "png",
+                "pdf"
+            ]
+        }
+    }
+}
