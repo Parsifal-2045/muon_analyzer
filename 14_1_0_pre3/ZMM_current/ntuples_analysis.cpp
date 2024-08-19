@@ -74,7 +74,7 @@ int main()
 
     gROOT->ProcessLine("gErrorIgnoreLevel = 1001;");
 
-    std::string FILE_PATH{"current_ZMM_PU_1k.root"};
+    std::string FILE_PATH{"current_ZMM_PU_15k.root"};
     std::string RESULTS_FOLDER{"ntuples_plots/"};
 
     // Plot booking
@@ -154,8 +154,8 @@ int main()
     }
 
     // L2 Seeds
-    TTreeReaderValue<Int_t> n_l2_seed{reader, "nl2_seed"};
-    TTreeReaderValue<Int_t> n_l2_seed_froml1{reader, "nl2_seed_froml1"};
+    TTreeReaderValue<Int_t> n_l2_seed_offline{reader, "nl2_seed_offline"};
+    TTreeReaderValue<Int_t> n_l2_seed_froml1{reader, "nl2_seed"};
     TTreeReaderValue<Int_t> n_l2_mu{reader, "nl2_mu"};
 
     int n_events = 1;
@@ -267,11 +267,11 @@ int main()
 
         // Fill 2D L2 muons/seeds plots
         // #L2 Offline Seeds vs #L1TkMu
-        histos_2d["n_l2_offline_vs_n_L1TkMu"]->Fill(*(muon_types[0].n_), *n_l2_seed);
+        histos_2d["n_l2_offline_vs_n_L1TkMu"]->Fill(*(muon_types[0].n_), *n_l2_seed_offline);
         // #L2 Seeds From L1TkMu vs #L1TkMu
         histos_2d["n_l2_from_L1TkMu_vs_n_L1TkMu"]->Fill(*(muon_types[0].n_), *n_l2_seed_froml1);
         // #L2 Seeds From L1TkMu vs #L2 Offline Seeds
-        histos_2d["n_l2_from_L1TkMu_vs_n_l2_offline"]->Fill(*n_l2_seed, *n_l2_seed_froml1);
+        histos_2d["n_l2_from_L1TkMu_vs_n_l2_offline"]->Fill(*n_l2_seed_offline, *n_l2_seed_froml1);
         // #L2 Muons vs #L1TkMu
         histos_2d["n_l2_muons_vs_n_L1TkMu"]->Fill(*(muon_types[0].n_), *n_l2_mu);
 
