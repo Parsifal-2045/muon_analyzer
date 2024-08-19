@@ -1,0 +1,107 @@
+{
+    "Fake rate vs pT": {
+        "comment": "Fake rate vs pT",
+        "inputs": {
+            "1 L2_Muon": {
+                "label": "L2 standalone muons from L1Tk",
+                "legendEntry": "L2 standalone Muons",
+                "filename": "new_validation/data/plots_OI_first_new_validation_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltL2MuonsFromL1TkMuon_UpdAtVtx",
+                "plot": "fakerate_vs_pt"
+            },
+            "2 L3_IO_Tk": {
+                "label": "L3 IO inner tracks",
+                "legendEntry": "L3 IO Tracks",
+                "filename": "new_validation/data/plots_OI_first_new_validation_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltIter2Phase2L3FromL1TkMuonMerged",
+                "plot": "fakerate_vs_pt"
+            },
+            "3 L3_OI_Tk": {
+                "label": "L3 OI inner tracks",
+                "legendEntry": "L3 OI Tracks",
+                "filename": "new_validation/data/plots_OI_first_new_validation_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3OIMuonTrackSelectionHighPurity",
+                "plot": "fakerate_vs_pt"
+            },
+            "4 L3_Tk_merged": {
+                "label": "L3 inner tracks merged",
+                "legendEntry": "L3 Tracks Merged",
+                "filename": "new_validation/data/plots_OI_first_new_validation_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3MuonMerged",
+                "plot": "fakerate_vs_pt"
+            },
+            "5 L3_Mu_global": {
+                "label": "L3 global Muons",
+                "legendEntry": "L3 Global Muons",
+                "filename": "new_validation/data/plots_OI_first_new_validation_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3GlbMuon",
+                "plot": "fakerate_vs_pt"
+            },
+            "6 L3_Mu_ID": {
+                "label": "Muon ID",
+                "legendEntry": "Muon ID",
+                "filename": "new_validation/data/plots_OI_first_new_validation_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltL3MuonIdTrks",
+                "plot": "fakerate_vs_pt"
+            },
+            "7 L2_seeds_tracks": {
+                "label": "L2 Seeds",
+                "legendEntry": "L2 Seeds",
+                "filename": "new_validation/data/plots_OI_first_new_validation_ZMM_5k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/muonL2SeedTrks",
+                "plot": "fakerate_vs_pt"
+            }
+        },
+        "plot": {
+            "x": [
+                1,
+                80,
+                "pT"
+            ],
+            "y": [
+                0,
+                1,
+                "Fake rate"
+            ],
+            "option": "",
+            "legendTitle": "Fake rate vs pT",
+            "caption": "Z PU200 CMSSW 14_1_0_pre5",
+            "logo": [
+                "CMS",
+                "Work In Progress"
+            ],
+            "colorMap": [
+                834,
+                866,
+                922,
+                902,
+                885,
+                797,
+                1
+            ],
+            "markerMap": [
+                27,
+                23,
+                21,
+                20,
+                24,
+                34,
+                58
+            ],
+            "legendRange": [
+                0.45,
+                0.67,
+                0.90,
+                0.85
+            ]
+        },
+        "output": {
+            "directory": "new_validation/plots",
+            "filenamePlot": "fake_rate_vs_pt",
+            "fileType": [
+                "png",
+                "pdf"
+            ]
+        }
+    }
+}
