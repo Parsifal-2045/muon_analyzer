@@ -1,0 +1,77 @@
+{
+    "L2 seeds validator efficiency comparison": {
+        "comment": "L2 seeds validator efficiency comparison",
+        "inputs": {
+            "1 Current": {
+                "label": "Current L2 seeds",
+                "legendEntry": "Current L2 seeds",
+                "filename": "seeds_and_id/data/plots_OI_first_seeds_and_ID_ZMM_15k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/muonL2SeedTrks",
+                "plot": "effic_vs_eta"
+            },
+            "2 IO_first": {
+                "label": "IO L2 seeds",
+                "legendEntry": "IO first L2 seeds",
+                "filename": "seeds_and_id/data/plots_OI_first_seeds_and_ID_ZMM_15k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/muonL2SeedTrks",
+                "plot": "effic_vs_eta"
+            },
+            "3 OI_first": {
+                "label": "OI L2 seeds",
+                "legendEntry": "OI L2 seeds",
+                "filename": "seeds_and_id/data/plots_OI_first_seeds_and_ID_ZMM_15k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/muonL2SeedTrks",
+                "plot": "effic_vs_eta"
+            }
+        },
+        "plot": {
+            "x": [
+                -2.5,
+                2.5,
+                "eta"
+            ],
+            "y": [
+                0.0,
+                1.0,
+                "Efficiency"
+            ],
+            "option": "",
+            "legendTitle": "Efficiency vs eta",
+            "caption": "Z PU200 CMSSW 14_1_0_pre5",
+            "logo": [
+                "CMS",
+                "Work In Progress"
+            ],
+            "colorMap": [
+                834,
+                866,
+                922,
+                902,
+                885,
+                797
+            ],
+            "markerMap": [
+                27,
+                23,
+                21,
+                20,
+                24,
+                58
+            ],
+            "legendRange": [
+                0.45,
+                0.67,
+                0.90,
+                0.85
+            ]
+        },
+        "output": {
+            "directory": "seeds_and_id/plots",
+            "filenamePlot": "seeds_effic_vs_eta",
+            "fileType": [
+                "png",
+                "pdf"
+            ]
+        }
+    }
+}
