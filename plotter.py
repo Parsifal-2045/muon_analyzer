@@ -238,6 +238,7 @@ for keyPlot in config:
                 histo = histograms[iHisto]
                 
             histo.GetXaxis().SetRangeUser(plotX[0], plotX[1])
+            histo.GetYaxis().SetRangeUser(plotY[0], plotY[1])
 
             if hasScale and histoClass == "TH1F":
                 histo.Scale(1.0/histo.Integral())
@@ -272,15 +273,16 @@ for keyPlot in config:
                     histo.GetYaxis().SetRangeUser(plotY[0], plotY[1])
                 else:
                     histo.GetYaxis().SetRangeUser(0.0, histo.GetMaximum() * 1.5)    
-                histo.GetXaxis().SetTitle(plotX[2])
-                histo.GetYaxis().SetTitle(plotY[2])
+            
+            histo.GetXaxis().SetTitle(plotX[2])
+            histo.GetYaxis().SetTitle(plotY[2])
                 
             canvas.Update()
 
             histo.GetXaxis().SetLabelSize(22)
             histo.GetXaxis().SetTitleFont(63)
             histo.GetXaxis().SetLabelFont(43)
-            histo.GetXaxis().SetTitleSize(22)
+            histo.GetXaxis().SetTitleSize(26)
             histo.GetXaxis().SetLabelSize(20)
             histo.GetXaxis().SetTitleOffset(1.2)
             if plotX[2] == "sector" and histo.GetXaxis().GetNbins() <= 14 :
@@ -290,7 +292,7 @@ for keyPlot in config:
             histo.GetYaxis().SetLabelSize(22)
             histo.GetYaxis().SetTitleFont(63)
             histo.GetYaxis().SetLabelFont(43)
-            histo.GetYaxis().SetTitleSize(22)
+            histo.GetYaxis().SetTitleSize(26)
             histo.GetYaxis().SetLabelSize(20)
             histo.GetYaxis().SetTitleOffset(2)
             if plotY[2] == "wheel" and histo.GetYaxis().GetNbins() == 5 :
