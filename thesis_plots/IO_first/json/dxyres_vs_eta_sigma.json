@@ -1,0 +1,80 @@
+{
+    "dxyres vs eta Sigma": {
+        "comment": "dxyres vs eta Sigma",
+        "inputs": {
+            "1 L3_IO_Tk": {
+                "label": "L3 IO inner tracks",
+                "legendEntry": "L3 IO Tracks",
+                "filename": "thesis_plots/IO_first/data/IO_first_plots_thesis_ZMM_15k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltIter2Phase2L3FromL1TkMuonMerged",
+                "plot": "dxyres_vs_eta_Sigma"
+            },
+            "3 L3_OI_Tk": {
+                "label": "L3 OI inner tracks",
+                "legendEntry": "L3 OI Tracks",
+                "filename": "thesis_plots/IO_first/data/IO_first_plots_thesis_ZMM_15k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3OIMuonTrackSelectionHighPurity",
+                "plot": "dxyres_vs_eta_Sigma"
+            },
+            "4 L3_Tk_merged": {
+                "label": "L3 inner tracks merged",
+                "legendEntry": "L3 Tracks Merged",
+                "filename": "thesis_plots/IO_first/data/IO_first_plots_thesis_ZMM_15k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltPhase2L3MuonMerged",
+                "plot": "dxyres_vs_eta_Sigma"
+            },
+            "5 L3_Mu_ID": {
+                "label": "Muon ID",
+                "legendEntry": "Muon ID",
+                "filename": "thesis_plots/IO_first/data/IO_first_plots_thesis_ZMM_15k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltL3MuonIdTrks",
+                "plot": "dxyres_vs_eta_Sigma"
+            }
+        },
+        "plot": {
+            "x": [
+                -2.5,
+                2.5,
+                "#eta"
+            ],
+            "y": [
+                0.0,
+                0.001,
+                "dxy Residual sigma"
+            ],
+            "option": "",
+            "legendTitle": "dxy Residual vs eta sigma",
+            "caption": "Z PU200 CMSSW 14_1_0_pre5",
+            "logo": [
+                "CMS",
+                "Work In Progress"
+            ],
+            "colorMap": [
+                866,
+                922,
+                902,
+                797
+            ],
+            "markerMap": [
+                23,
+                21,
+                20,
+                34
+            ],
+            "legendRange": [
+                0.45,
+                0.67,
+                0.90,
+                0.85
+            ]
+        },
+        "output": {
+            "directory": "thesis_plots/IO_first/plots",
+            "filenamePlot": "dxyres_vs_eta_Sigma",
+            "fileType": [
+                "png",
+                "pdf"
+            ]
+        }
+    }
+}

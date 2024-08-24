@@ -1,0 +1,64 @@
+{
+    "Fake rate vs eta for L2 Standalone Muons": {
+        "comment": "Fake rate vs eta for L2 Standalone Muons",
+        "inputs": {
+            "1 current": {
+                "label": "Current L2 Standalone Muons",
+                "legendEntry": "Current L2 Standalone Muons",
+                "filename": "thesis_plots/current/data/current_plots_thesis_ZMM_15k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltL2MuonsFromL1TkMuon_UpdAtVtx",
+                "plot": "fakerate_vs_eta"
+            },
+            "2 Phase2": {
+                "label": "Modified L2 Standalone Muons",
+                "legendEntry": "Modified L2 Standalone Muons",
+                "filename": "thesis_plots/IO_first/data/IO_first_plots_thesis_ZMM_15k.root",
+                "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/hltL2MuonsFromL1TkMuon_UpdAtVtx",
+                "plot": "fakerate_vs_eta"
+            }
+        },
+        "plot": {
+            "x": [
+                -2.5,
+                2.5,
+                "#eta"
+            ],
+            "y": [
+                0.0,
+                0.1,
+                "Fake rate"
+            ],
+            "option": "",
+            "legendTitle": "Fake rate vs eta",
+            "caption": "Z PU200 CMSSW 14_1_0_pre5",
+            "logo": [
+                "CMS",
+                "Work In Progress"
+            ],
+            "colorMap": [
+                866,
+                902,
+                797
+            ],
+            "markerMap": [
+                23,
+                21,
+                20
+            ],
+            "legendRange": [
+                0.45,
+                0.67,
+                0.90,
+                0.85
+            ]
+        },
+        "output": {
+            "directory": "thesis_plots/comparison",
+            "filenamePlot": "l2_fakerate_vs_eta",
+            "fileType": [
+                "png",
+                "pdf"
+            ]
+        }
+    }
+}
