@@ -57,7 +57,7 @@
                 "Efficiency"
             ],
             "option": "",
-            "legendTitle": "Efficiency vs pT",
+            "legendTitle": "Efficiency vs pT (IO first)",
             "caption": "Z PU200 CMSSW 14_1_0_pre5",
             "logo": [
                 "CMS",

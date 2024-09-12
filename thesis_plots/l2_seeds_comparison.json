@@ -1,0 +1,71 @@
+{
+    "Number of L2 seeds comparison": {
+        "comment": "Number of L2 seeds comparison",
+        "inputs": {
+            "1 current": {
+                "label": "Offline L2 Muon seeds",
+                "legendEntry": "Offline Standalone Muon seeds",
+                "filename": "thesis_plots/current/ntuples_analysis/histograms.root",
+                "folder": "",
+                "plot": "l2_offline_seeds"
+            },
+            "2 IO_first": {
+                "label": "L2 seeds from L1TkMu (current)",
+                "legendEntry": "L2 seeds from L1TkMu (current)",
+                "filename": "thesis_plots/current/ntuples_analysis/histograms.root",
+                "folder": "",
+                "plot": "l2_from_l1tk_seeds"
+            },
+            "3 OI_first": {
+                "label": "L2 seeds from L1TkMu (new)",
+                "legendEntry": "L2 seeds from L1TkMu (new)",
+                "filename": "thesis_plots/IO_first/ntuples_analysis/histograms.root",
+                "folder": "",
+                "plot": "phase2_l2_seeds"
+            }
+        },
+        "plot": {
+            "x": [
+                0.0,
+                20,
+                "Number of seeds"
+            ],
+            "y": [
+                0.0,
+                8000,
+                "Occurrences"
+            ],
+            "option": "",
+            "legendTitle": "Number of Standalone Muon seeds",
+            "caption": "Z PU200 CMSSW 14_1_0_pre5",
+            "logo": [
+                "CMS",
+                "Work In Progress"
+            ],
+            "colorMap": [
+                866,
+                902,
+                797
+            ],
+            "markerMap": [
+                23,
+                21,
+                20
+            ],
+            "legendRange": [
+                0.45,
+                0.67,
+                0.90,
+                0.85
+            ]
+        },
+        "output": {
+            "directory": "thesis_plots/comparison",
+            "filenamePlot": "l2_seeds_comparison",
+            "fileType": [
+                "png",
+                "pdf"
+            ]
+        }
+    }
+}

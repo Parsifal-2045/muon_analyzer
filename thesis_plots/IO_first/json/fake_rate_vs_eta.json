@@ -57,7 +57,7 @@
                 "Fake rate"
             ],
             "option": "",
-            "legendTitle": "Fake rate vs eta",
+            "legendTitle": "Fake rate vs eta (IO first)",
             "caption": "Z PU200 CMSSW 14_1_0_pre5",
             "logo": [
                 "CMS",

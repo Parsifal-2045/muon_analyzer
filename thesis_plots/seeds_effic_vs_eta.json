@@ -5,7 +5,7 @@
             "1 Current": {
                 "label": "Current L2 seeds",
                 "legendEntry": "Current L2 seeds",
-                "filename": "thesis_plots/IO_first/data/IO_first_plots_thesis_ZMM_15k.root",
+                "filename": "thesis_plots/current/data/current_plots_thesis_ZMM_15k.root",
                 "folder": "DQMData/Run 1/HLT/Run summary/Muon/MuonTrack/muonL2SeedTrks",
                 "plot": "effic_vs_eta"
             },
@@ -24,8 +24,8 @@
                 "#eta"
             ],
             "y": [
-                0.0,
-                1.0,
+                0.7,
+                1.3,
                 "Efficiency"
             ],
             "option": "",
@@ -36,20 +36,14 @@
                 "Work In Progress"
             ],
             "colorMap": [
-                834,
                 866,
-                922,
                 902,
-                885,
                 797
             ],
             "markerMap": [
-                27,
                 23,
                 21,
-                20,
-                24,
-                58
+                20
             ],
             "legendRange": [
                 0.45,
