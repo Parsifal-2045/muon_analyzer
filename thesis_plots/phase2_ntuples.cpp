@@ -4,6 +4,7 @@
 #include <optional>
 #include <string>
 #include <string_view>
+#include <numeric>
 
 #include "TCanvas.h"
 #include "TColor.h"
@@ -84,14 +85,15 @@ int main()
         // Plot booking
         std::map<std::string, TH1 *> histos;
         // Gen
-        histos["gen_mu_eta"] = new TH1F("gen_mu_eta", ";Gen #mu #eta;Entries", 100, -2.5, 2.5);
-        histos["gen_mu_phi"] = new TH1F("gen_mu_phi", ";Gen #mu #phi;Entries", 100, -TMath::Pi(), TMath::Pi());
-        histos["gen_mu_pt"] = new TH1F("gen_mu_pt", ";Gen #mu pt;Entries", 100, 0, 100);
+        histos["gen_mu_eta"] = new TH1F("gen_mu_eta", ";Gen #mu #eta;Occurrences", 100, -2.5, 2.5);
+        histos["gen_mu_phi"] = new TH1F("gen_mu_phi", ";Gen #mu #phi;Occurrences", 100, -TMath::Pi(), TMath::Pi());
+        histos["gen_mu_pt"] = new TH1F("gen_mu_pt", ";Gen #mu pt;Occurrences", 100, 0, 100);
 
         // L2 seeds from L1TkMu
-        histos["l2_seed_pt"] = new TH1F("l2_seed_pt", ";pT;Entries", 100, 0., 100.);
-        histos["l2_seed_delta_pt"] = new TH1F("l2_seed_delta_pt", "; #Delta pT;Entries", 100, 0, 5);
-        histos["l2_seed_nhits"] = new TH1I("l2_seed_nhits", ";# of DT/CSC segments per L2 seed; Entries", 10, 0, 10);
+        histos["l2_seed_pt"] = new TH1F("l2_seed_pt", ";pT;Occurrences", 100, 0., 100.);
+        histos["l2_seed_delta_pt"] = new TH1F("l2_seed_delta_pt", "; #Delta pT;Occurrences", 100, 0, 5);
+        histos["l2_seed_nhits"] = new TH1I("l2_seed_nhits", ";# of DT/CSC segments per L2 seed; Occurrences", 10, 0, 10);
+        histos["phase2_l2_seeds"] = new TH1I("phase2_l2_seeds", ";# L2 seeds from L1 Tracker Muon (new); Occurrences", 30, 0, 30);
 
         // Reco and Fake
         std::vector<std::string> names = {"L1TkMu",
@@ -132,24 +134,24 @@ int main()
         for (std::size_t i = 0; i != names.size(); i++)
         {
             std::string eta = names[i] + "_eta";
-            histos[eta.c_str()] = new TH1F(eta.c_str(), "; #eta; Entries", nbins, -2.5, 2.5);
+            histos[eta.c_str()] = new TH1F(eta.c_str(), "; #eta; Occurrences", nbins, -2.5, 2.5);
             if (names[i].substr(0, 2) == "L1")
             {
                 std::string eta_reco = names[i] + "_eta_reco";
-                histos[eta_reco.c_str()] = new TH1F(eta_reco.c_str(), "; Reco tracks #eta; Entries", nbins, -2.5, 2.5);
+                histos[eta_reco.c_str()] = new TH1F(eta_reco.c_str(), "; Reco tracks #eta; Occurrences", nbins, -2.5, 2.5);
                 std::string eta_fake = names[i] + "_eta_fake";
-                histos[eta_fake.c_str()] = new TH1F(eta_fake.c_str(), "; Fake tracks #eta; Entries", nbins, -2.5, 2.5);
+                histos[eta_fake.c_str()] = new TH1F(eta_fake.c_str(), "; Fake tracks #eta; Occurrences", nbins, -2.5, 2.5);
             }
             std::string phi = names[i] + "_phi";
-            histos[phi.c_str()] = new TH1F(phi.c_str(), "; #phi; Entries", nbins, -TMath::Pi(), TMath::Pi());
+            histos[phi.c_str()] = new TH1F(phi.c_str(), "; #phi; Occurrences", nbins, -TMath::Pi(), TMath::Pi());
             std::string delta_R = names[i] + "_delta_R";
-            histos[delta_R.c_str()] = new TH1F(delta_R.c_str(), "; #Delta R; Entries", nbins, 0, max_deltaR_plot);
+            histos[delta_R.c_str()] = new TH1F(delta_R.c_str(), "; #Delta R; Occurrences", nbins, 0, max_deltaR_plot);
             std::string delta_pt = names[i] + "_delta_pt";
-            histos[delta_pt.c_str()] = new TH1F(delta_pt.c_str(), "; #Delta pT; Entries", nbins, 0, 5);
+            histos[delta_pt.c_str()] = new TH1F(delta_pt.c_str(), "; #Delta pT; Occurrences", nbins, 0, 5);
             std::string pt_fake = names[i] + "_pt_fake";
-            histos[pt_fake.c_str()] = new TH1F(pt_fake.c_str(), "; Fake track pT; Entries", nbins, 0, 50);
+            histos[pt_fake.c_str()] = new TH1F(pt_fake.c_str(), "; Fake track pT; Occurrences", nbins, 0, 50);
             std::string pt_reco = names[i] + "_pt_reco";
-            histos[pt_reco.c_str()] = new TH1F(pt_reco.c_str(), "; Reco track pT; Entries", nbins, 0, 100);
+            histos[pt_reco.c_str()] = new TH1F(pt_reco.c_str(), "; Reco track pT; Occurrences", nbins, 0, 100);
             std::string reco_per_event = names[i] + "_reco_per_event";
             histos[reco_per_event.c_str()] = new TH1I(reco_per_event.c_str(), "; Number of Reco objects per event; Occurrences", 6, 0, 6);
             std::string fake_per_event = names[i] + "_fake_per_event";
@@ -158,13 +160,13 @@ int main()
             if (names[i].substr(0, 2) == "l3")
             {
                 std::string nhits_pixel_fake = names[i] + "_nPixelHits_fake";
-                histos[nhits_pixel_fake.c_str()] = new TH1I(nhits_pixel_fake.c_str(), "; Fake Tracks number of hits in the Pixel; Entries", 15, 0, 15);
+                histos[nhits_pixel_fake.c_str()] = new TH1I(nhits_pixel_fake.c_str(), "; Fake Tracks number of hits in the Pixel; Occurrences", 15, 0, 15);
                 std::string nhits_pixel_reco = names[i] + "_nPixelHits_reco";
-                histos[nhits_pixel_reco.c_str()] = new TH1I(nhits_pixel_reco.c_str(), "; Reco Tracks number of hits in the Pixel; Entries", 15, 0, 15);
+                histos[nhits_pixel_reco.c_str()] = new TH1I(nhits_pixel_reco.c_str(), "; Reco Tracks number of hits in the Pixel; Occurrences", 15, 0, 15);
                 std::string nhits_tracker_fake = names[i] + "_nTrkLays_fake";
-                histos[nhits_tracker_fake.c_str()] = new TH1I(nhits_tracker_fake.c_str(), "; Fake Tracks number of hits in the Tracker; Entries", 15, 0, 15);
+                histos[nhits_tracker_fake.c_str()] = new TH1I(nhits_tracker_fake.c_str(), "; Fake Tracks number of hits in the Tracker; Occurrences", 15, 0, 15);
                 std::string nhits_tracker_reco = names[i] + "_nTrkLays_reco";
-                histos[nhits_tracker_reco.c_str()] = new TH1I(nhits_tracker_reco.c_str(), "; Reco Tracks number of hits in the Tracker; Entries", 15, 0, 15);
+                histos[nhits_tracker_reco.c_str()] = new TH1I(nhits_tracker_reco.c_str(), "; Reco Tracks number of hits in the Tracker; Occurrences", 15, 0, 15);
             }
         }
         // 2d plots
@@ -211,7 +213,11 @@ int main()
         // TTreeReaderValue<Int_t> n_l2_cosmic_seed_froml1{reader, "nl2_cosmic_seed_froml1"};
         // TTreeReaderValue<Int_t> n_l2_cosmic_mu{reader, "nl2_cosmic_mu"};
 
-        int n_events = 1;
+        int n_events = 0;
+        int events_with_no_reuse = 0;
+        std::vector<int> n_objects_to_reuse_vector;
+        n_objects_to_reuse_vector.reserve(15000);
+
         while (reader.Next())
         {
             std::vector<int> gen_index;
@@ -338,6 +344,9 @@ int main()
                 muon_types[i].good_indexes_.clear();
             } // End loop over muon types
 
+            // Fill # of seeds plots
+            histos["phase2_l2_seeds"]->Fill(*n_phase2_l2_seed);
+
             // Fill 2D L2 muons/seeds plots
             // #Phase2 L2 Seeds vs #L1TkMu
             histos_2d["n_phase2_l2_from_L1TkMu_vs_n_L1TkMu"]->Fill(*(muon_types[0].n_), *n_phase2_l2_seed);
@@ -348,6 +357,14 @@ int main()
             // histos_2d["n_l2_cosmic_seed_from_l1_vs_n_L1TkMu"]->Fill(*(muon_types[0].n_), *n_l2_cosmic_seed_froml1);
             // histos_2d["n_l2_cosmic_mu_vs_n_L1TkMu"]->Fill(*(muon_types[0].n_), *n_l2_cosmic_mu);
 
+            if (*(muon_types[7].n_) == 0)
+            {
+                ++events_with_no_reuse;
+            }
+            else if (*(muon_types[7].n_) != 0)
+            {
+                n_objects_to_reuse_vector.push_back(*(muon_types[7].n_));
+            }
             ++n_events;
         }
 
@@ -355,7 +372,7 @@ int main()
         std::string RESULTS_FOLDER;
         if (IO_first)
         {
-            RESULTS_FOLDER = "IO_first/ntuples_analysis";
+            RESULTS_FOLDER = "IO_first/ntuples_analysis/";
         }
         else
         {
@@ -364,12 +381,15 @@ int main()
         std::filesystem::create_directory(RESULTS_FOLDER);
         auto dt_color = TColor::GetColorTransparent(kOrange - 2, 0.5);
 
+        std::string oFile = RESULTS_FOLDER + "histograms.root";
+        TFile *outputFile = new TFile(oFile.c_str(), "RECREATE");
+
         // 1D
         for (const auto &[name, histo] : histos)
         {
             TCanvas c{name.c_str(), name.c_str(), 3000, 1500};
             c.SetGrid();
-
+            histo->Write();
             histo->SetFillColor(dt_color);
             histo->Draw();
             histo->SetMinimum(0.0);
@@ -391,7 +411,6 @@ int main()
                     std::cout << "Number of Fake " << name.substr(0, found_pos) << ": " << histo->GetEntries() << '\n';
                 }
             }
-            
             c.SaveAs(Form("%s/%s.png", RESULTS_FOLDER.c_str(), name.c_str()));
             c.SaveAs(Form("%s/%s.pdf", RESULTS_FOLDER.c_str(), name.c_str()));
         }
@@ -400,8 +419,9 @@ int main()
         {
             TCanvas c{name.c_str(), name.c_str(), 3000, 1500};
             c.SetGrid();
-
+            histo->Write();
             histo->Draw("COLZ");
+
             c.Update();
             TPaveStats *stats = (TPaveStats *)c.GetPrimitive("stats");
             stats->SetX1NDC(0.75);
@@ -413,6 +433,15 @@ int main()
             c.SaveAs(Form("%s/%s.pdf", RESULTS_FOLDER.c_str(), name.c_str()));
         }
 
-        std::cout << "Total number of events " << n_events << std::endl;
+        std::cout << "Total number of events: " << n_events << std::endl;
+        std::cout << "Events with no object to be reused: " << events_with_no_reuse << std::endl;
+        std::cout << "Percentage of events with no reuse: " << static_cast<double>(events_with_no_reuse) * 100 / n_events << "%" << std::endl;
+
+        double total_to_reuse = static_cast<double>(std::reduce(n_objects_to_reuse_vector.begin(), n_objects_to_reuse_vector.end()));
+        double mean_to_reuse = total_to_reuse / n_objects_to_reuse_vector.size();
+        std::cout << "Mean number of objects to reuse in events where necessary: " << mean_to_reuse << " +/- " << mean_to_reuse / std::sqrt(total_to_reuse) << std::endl;
+
+        outputFile->Close();
+        delete outputFile;
     }
 }
