@@ -1,25 +1,37 @@
 # Muon analysis
 Plotter and configurations for preliminary muon HLT performance analysis for Phase 2 of the CMS experiment.
-
-## Contents
 All root files, plots and timing information can be found on [this website](https://lferragi.web.cern.ch/) (requires CERN login). Unless stated otherwise
-- results in [14_0_X](/14_0_X/) are obtained from CMSSW 14_0_0 with D98 geometry and Phase2 conditions
-- results in [14_1_0_pre3](/14_1_0_pre3/) are obtained from 14_1_0_pre3 with D110 geometry with Phase2 conditions.
-The former are now deprecated and all new developments will be on top of CMSSW 14_1_0_pre3
 
-### [Single Mu no PU sample](/14_1_0_pre3/SingleMu_phase2/)
+## Thesis plots
+Contains plots and comparisons obtained from a ZMM RelVal based on CMSSW_14_1_0_pre5 (results updated august 2024)
+
+## Other contents
+- results in [14_0_X](/14_0_X/) are obtained from CMSSW 14_0_0 with D98 geometry and Phase-2 conditions
+- results in [14_1_0_pre3](/14_1_0_pre3/) are obtained from 14_1_0_pre3 with D110 geometry with Phase-2 conditions.
+- results in [14_1_0_pre5](/14_1_0_pre5/) are obtained from CMSSW_14_1_0_pre5 with D110 geometry and in Phase-2 conditions
+
+Most up to date results: 14_1_0_pre5
+They include:
+- [seed_validator_comparison](/14_1_0_pre5/seed_validator_comparison/)
+- [seeds_and_id](/14_1_0_pre5/seeds_and_id/)
+- [new_validation](/14_1_0_pre5/new_validation/)
+- [summary_plots](/14_1_0_pre5/summary_plots/)
+
+### Deprecated 14_1_0_pre3
+
+#### [Single Mu no PU sample](/14_1_0_pre3/SingleMu_phase2/)
 SingleMu RelVal for matching testing 
 - [dR_matching](/14_1_0_pre3/SingleMu_phase2/dR_matching/): matching logic associates stubs with segments that are within a dR window of 0.1 in both DTs and CSCs
 - [dPhi+dTheta_matching](/14_1_0_pre3/SingleMu_phase2/dPhi+nHits_matching/): matching logic associates stubs with segments checking in a dPhi window first (0.1), if multiple segments are found in the same window the number of hits in phi (DT) or the total number of hits (CSC) is checked, if there still are multiple matches a window in dTheta is opened (???), finally the hit multiplicity in Theta is checked (DT-only). Logic implemented for barrel and endcap, overlap still relies on dR matching
 - [dR_matching](/14_1_0_pre3/SingleMu_phase2/full_new_matching/): extension of new matching logic to the overlap region
 
-### [ZMM current](/14_1_0_pre3/ZMM_current/)
+#### [ZMM current](/14_1_0_pre3/ZMM_current/)
 Current performance on ZMM events with 200PU in phase2 conditions
 
-### [ZMM Phase2](/14_1_0_pre3/ZMM_phase2/)
+#### [ZMM Phase2](/14_1_0_pre3/ZMM_phase2/)
 Various performance measurements on ZMM events with 200PU in phase2 conditions
 
-### [PU segments complexity](/14_1_0_pre3/PU_segments_complexity/)
+#### [PU segments complexity](/14_1_0_pre3/PU_segments_complexity/)
 Number of DT/CSC segments per event in ZMM events with 200PU
 
 ### Deprecated 14_0_X

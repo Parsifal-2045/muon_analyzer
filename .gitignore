@@ -5,6 +5,10 @@
 *.png
 *.pdf
 *.out
+*.log
 
 # vscode
 .vscode/
+
+# notes 
+notes.md
