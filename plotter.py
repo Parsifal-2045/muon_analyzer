@@ -53,7 +53,7 @@ with open(args.inputJsonConfig, 'r') as f:
 Go through plots defined in config JSON
 """
 
-from ROOT import * # import this here, otherwise it overwrites the argparse stuff
+from ROOT import gROOT, TH1, gStyle, TFile, TCanvas, TPad, TLegend, TF1, TLatex # import this here, otherwise it overwrites the argparse stuff
 gROOT.SetBatch(True) # set ROOT to batch mode, this suppresses printing canvases
 gROOT.ProcessLine("gErrorIgnoreLevel = 1001") # suppress stdout pollution of canvas.Print(...)
 
